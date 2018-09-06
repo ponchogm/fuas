@@ -1,0 +1,1353 @@
+<?php
+include ('seguridad2.php');
+include ('conectar.php');
+$rut=$_GET['rut'];
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <script type="text/javascript" src="bootstrap/js/validarut.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <meta charset="utf-8">
+    <title>Beneficios - Universidad Metropolitana de Ciencias de la Educación</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+
+
+    <!- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <script>
+function enviar_formulario(){
+   document.form1.submit()
+}
+</script>
+  </head>
+
+  <body>
+  <script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/modal.js"></script>
+    <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Beneficios</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="print_formalum.php?var7=<? echo $rut; ?>"><i class="icon-print"></i> Imprimir Formulario</a></li>
+            <li class="divider-vertical"></li>
+          </ul>
+          <ul class="nav pull-right">
+            <li><a href="#"><i class="icon-user"></i> usuario: <? echo $_SESSION["usuarioactual"]; ?></a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="form3.php?var=<? echo $rut; ?>"><i class="icon-off"></i> Cerrar</a></li>
+          </ul>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+
+    <div class="container">
+
+      <!-- Cabecera del formulario -->
+      <div class="row-fluid">
+        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
+        <div class="span8" style="text-align:center"><h3>Formulario de acreditación socioeconómica</h3></div>
+        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>
+      </div>
+        <p>
+      <!-- Comienzo del formulario UMCE por Luis García Manzo -->
+
+        <div class="controls controls-row">
+          <legend>Antecedentes del estudiante</legend>
+  <?php
+        $resultado=$con->query("SELECT alumnos.*,carreras.* FROM alumnos, carreras
+        WHERE rut_alum ='$rut' AND cod_carrera_alum = codigo_car");
+
+        while($row = $resultado->fetch_array(MYSQLI_ASSOC))
+  {
+  $rut=$row['rut_alum'];
+	$nombre=$row['nombres_alum'] ." ". $row['ap_pat_alum'] ." ". $row['ap_mat_alum'];
+	$fnac=$row['fecha_nac'];
+	$ingreso=$row['anio_ingreso_alum'];
+	$direccion=$row['direccion_alum'];
+	$comuna=$row['comuna_alum'];
+	$fono=$row['telefono_alum'];
+	$celu=$row['celular_alum'];
+	$correo=$row['correo_alum'];
+	$nacionalidad=$row['nac_alum'];
+	$discap=$row['discap_alum'];
+	$pueblo=$row['pueb_orig_alum'];
+	$carrera=$row['nombre_car'];
+	$cod_car=$row['cod_carrera_alum'];
+	$id_alum=$row['id_alum'];
+
+	  echo $row['rut_alum'];
+    echo "<p>";
+    echo $row['cod_carrera_alum'];
+     }
+    ?>
+      <table class="table table-hover table table-bordered" width="100%">
+        <tr>
+          <th>Nombre</th>
+          <th>R.U.T.</th>
+          <th>Fecha de nacimiento</th>
+          <th>Año de ingreso</th>
+        </tr>
+        <tr>
+          <td><?php echo utf8_encode($nombre); ?></td>
+          <td><?php echo $rut; ?></td>
+          <td><?php echo $fnac; ?></td>
+          <td><?php echo $ingreso; ?></td>
+        </tr>
+        <tr>
+          <th>Dirección</th>
+          <th>Comuna</th>
+          <th>Teléfonos</th>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <td><a data-toggle='modal' href='#divdir'><?php echo $direccion; ?></a></td>
+          <td><a data-toggle='modal' href='#divcomuna'><?php echo $comuna; ?></a></td>
+          <td><a data-toggle='modal' href='#divfono'><?php echo $fono; ?></a> - <a data-toggle='modal' href='#divcelu'><?php echo $celu; ?></a></td>
+          <td><a data-toggle='modal' href='#divmail'><?php echo $correo; ?></a></td>
+        </tr>
+        <tr>
+          <th>Nacionalidad</th>
+          <th>Discapacidad</th>
+          <th>Pueblo Originario</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr>
+          <td><a data-toggle='modal' href='#divnac'><?php echo $nacionalidad; ?></a></td>
+          <td><a data-toggle='modal' href='#divdiscap'><?php echo $discap; ?></a></td>
+          <td colspan="2"><a data-toggle='modal' href='#divpueblo'><?php echo $pueblo; ?></a></td>
+        </tr>
+        <tr>
+          <th colspan="4">Carrera</th>
+        </tr>
+        <tr>
+          <td colspan="4"><?php echo $carrera; ?></td>
+        </tr>
+      </table>
+      </div>
+            <div class='controls controls-row'>
+
+              <!-- Modal para actualizar Dirección-->
+            <div id="divdir" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar dirección del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="dir" action="actualizadir2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Escriba su dirección actual.</p>
+                  <input type="text" id="dir" name="dir" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar Dirección-->
+              <!-- Modal para actualizar Comuna-->
+            <div id="divcomuna" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar comuna del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="comuna" action="actualizacomuna2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Escriba su comuna actual.</p>
+                  <input type="text" id="comuna" name="comuna" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+      </div>
+  </div>
+              <!-- Fin Modal para actualizar Comuna-->
+              <!-- Modal para actualizar Teléfono fijo-->
+            <div id="divfono" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Teléfono fijo del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="fono" action="actualizafijo2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Escriba su teléfono fijo actual.</p>
+                  <input type="text" id="fijo" name="fijo" class="span3">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+  </div>
+</div>
+              <!-- Fin Modal para actualizar Teléfono fijo-->
+              <!-- Modal para actualizar Teléfono Celular-->
+            <div id="divcelu" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Celular del alumno</h3>
+                    </div>
+                  <div class="modal-body">
+                  <form name="celu" action="actualizacel2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Escriba su teléfono celular actual.</p>
+                  <input type="text" id="cel" name="cel" class="span3">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+               </div>
+              </div>
+              <!-- Fin Modal para actualizar Teléfono Celular-->
+              <!-- Modal para actualizar Email-->
+            <div id="divmail" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Email del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="mail" action="actualizamail2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Escriba su Email actual.</p>
+                  <input type="text" id="email" name="email" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+  </div>
+              </div>
+              <!-- Fin Modal para actualizar Email-->
+              <!-- Modal para actualizar Nacionalidad-->
+            <div id="divnac" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar nacionalidad del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="nac" action="actualizanac2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Indique su nacionalidad.</p>
+                  <input type="text" id="nac" name="nac" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+  </div>
+              </div>
+              <!-- Fin Modal para actualizar Dirección-->
+              <!-- Modal para actualizar Discapacidad-->
+            <div id="divdiscap" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar discapacidad del alumno</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="discap" action="actualizadiscap2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Indique que discapacidad sufre.</p>
+                  <input type="text" id="discap" name="discap" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+  </div>
+              </div>
+              <!-- Fin Modal para actualizar Dirección-->
+              <!-- Modal para actualizar Pueblo originario-->
+<div id="divpueblo" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Etnia del alumno</h3>
+                    </div>
+                  <div class="modal-body">
+                  <form name="pueblo" action="actualizapueblo2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Indique a que pueblo originario pertenece.</p>
+                  <input type="text" id="pueblo" name="pueblo" class="span4">
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+               </div>
+              </div>
+              <!-- Fin Modal para actualizar Pueblo-->
+<legend>Beneficios del estudiante</legend>
+              <table class='table table-hover table table-bordered'>
+
+            <?php
+              /*
+              $resultado2=$con->query("SELECT alumnos.*,beneficios.*,becasycreditos.*
+              FROM alumnos, beneficios, becasycreditos
+              WHERE rut_alum ='$rut' AND id_alum = id_alum_bene AND id_beca_bene = id_becas");
+              */
+              $resultado2=$con->query("SELECT alumnos.* FROM alumnos WHERE rut_alum ='$rut'");
+              while($fila = $resultado2->fetch_array(MYSQLI_ASSOC))
+            {
+            //$id_bene=$fila['id_beneficios'];
+			      //$beca=$fila['id_becas'];
+			      $postula=$fila['postula_beca_alum'];
+            //echo "<tr><td>".utf8_encode($fila['becas_nombre'])."</td></tr>";
+            }
+          ?>
+
+                <tr>
+                  <th>
+                    Beca interna a la cual postula
+                  </th>
+                </tr>
+                <tr>
+                <td><a data-toggle='modal' href='#divpostula'><?php echo $postula; ?>*</a></td>
+              </tr>
+             </table>
+
+             <!-- Modal para actualizar beca de postulacion-->
+                  <div id="divpostula" class="modal hide fade in" style="display: none;">
+                    <div class="modal-header">
+                      <a data-dismiss="modal" class="close">×</a>
+                         <h3>Actualizar Beca interna a la cual postula</h3>
+                    </div>
+                  <div class="modal-body">
+                  <form name="postula" action="actualizapostula2.php?var2=<? echo $rut; ?>" method="post">
+                  <p>Seleccione la beca a la cual quiere postular</p>
+                  <select id="postula" name="postula">
+                    <option value="No postula">No postula</option>
+                    <option value="Beca de alimentación UMCE">Beca de alimentación UMCE</option>
+                    <option value="Beca de estudios UMCE">Beca de estudios UMCE</option>
+                  </select>
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar beca de postulacion-->
+<div class='controls controls-row'>
+<legend>Antecedentes del grupo familiar</legend>
+          <table class='table table-hover table table-bordered'>
+            <tr>
+              <th class='span3'>Dirección grupo familiar</th>
+              <th class='span2'>Comuna</th>
+              <th class='span2'>Ciudad</th>
+              <th class='span2'>Teléfono</th>
+            </tr>
+            <?php
+              $resultado3=$con->query("SELECT alumnos.*,hogar.*,vivienda.*
+              FROM alumnos, hogar, vivienda
+              WHERE rut_alum ='$rut' AND id_alum = hogar_id_alum AND hogar_vivienda = id_vivienda");
+
+              while($fila1 = $resultado3->fetch_array(MYSQLI_ASSOC))
+            {
+            $id_alumno=$fila1['id_alum'];
+            $dirgrupo=$fila1['hogar_dir'];
+            $comunagrupo=$fila1['hogar_comuna'];
+            $ciudadgrupo=$fila1['hogar_ciudad'];
+            $fonogrupo=$fila1['hogar_telefono'];
+            $viv_tipo=$fila1['vivienda_tipo'];
+            }
+          ?>
+            <tr>
+              <td><a data-toggle='modal' href='#divdirgrp'><? echo $dirgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divcomunagrp'><? echo $comunagrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divciudadgrp'><? echo $ciudadgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divfonogrp'><? echo $fonogrupo; ?></a></td>
+            </tr>
+          </table>
+        </div>
+        <!-- Modal para actualizar direccion del grupo familiar-->
+            <div id="divdirgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar dirección del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="dirgrp" action="actualizadirgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la nueva dirección del grupo familiar</p>
+                  <input type="text" id="dirgrp" name="dirgrp" class="span4">
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar direccion del grupo familiar-->
+              <!-- Modal para actualizar comuna del grupo-->
+            <div id="divcomunagrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar comuna del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="comunagrp" action="actualizacomunagrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la comuna donde reside el grupo familiar</p>
+                  <input type="text" id="comunagrp" name="comunagrp" class="span4">
+                 </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar beca de postulacion-->
+              <!-- Modal para actualizar ciudad del grupo familiar-->
+            <div id="divciudadgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar ciudad del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="ciudadgrp" action="actualizaciudadgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la ciudad donde reside el grupo familiar</p>
+                  <input type="text" id="ciudadgrp" name="ciudadgrp" class="span4">
+                  </select>
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar ciudad del grupo familiar-->
+              <!-- Modal para actualizar telefono del grupo familiar-->
+            <div id="divfonogrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar teléfono del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="fonogrp" action="actualizafonogrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba el número de telefono del grupo familiar</p>
+                  <input type="text" id="fonogrp" name="fonogrp" class="span4">
+                  </select>
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar telefono del grupo familiar-->
+              <!-- Modal para actualizar tipo de vivienda del grupo familiar-->
+            <div id="divvivgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar condición de la vivienda del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="vivgrp" action="actualizavivgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Seleccione la beca a la cual quiere postular</p>
+                  <select class="span5" id="vivgrp" name="vivgrp">
+                 <option value="1">Propietario Vivienda Pagada</option>
+                 <option value="2">Propietario Vivienda en Pago</option>
+                 <option value="3">Arrendatario</option>
+                 <option value="4">Usufructuario</option>
+                 <option value="5">Allegado</option>
+          </select>
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+      </div>
+              <!-- Fin Modal para actualizar tipo de vivienda del grupo familiar-->
+        <div class='controls controls-row'>
+          <table class='table table-hover table table-bordered'>
+            <tr>
+              <th class='span3'>Condición de la vivienda</th>
+            </tr>
+            <tr>
+              <td><a data-toggle='modal' href='#divvivgrp'><? echo $viv_tipo; ?></a></td>
+            </tr>
+          </table>
+        </div>
+        <p>
+         <div class='controls controls-row'>
+              <p>
+               <!--
+              <legend>Padres que no pertenecen al grupo familiar</legend>
+
+          <table class='table table-hover table table-bordered'>
+  <tr>
+    <th>Nombre Padres</th>
+    <th>Rut</th>
+    <th>Parentesco</th>
+    <th>Dirección</th>
+    <th>Comuna</th>
+    <th>Ciudad</th>
+    <th>Región</th>
+    <th>Estado civil</th>
+    <th>Actividad</th>
+    <th>Eliminar</th>
+    <th><a data-toggle='modal' href='#divagregaungrp'>Agregar</a></th>
+  </tr>
+  <?php
+              $resultado5=$con->query("SELECT alumnos.*,un_grupo_familiar.*
+              FROM alumnos, un_grupo_familiar
+              WHERE rut_alum ='$rut' AND id_alum = un_grupo_alum_id");
+
+              while($fila3 = $resultado5->fetch_array(MYSQLI_ASSOC))
+            {
+          $un_grupo_alum_id=$fila3['un_grupo_alum_id'];
+          $un_grupo_id=$fila3['un_grupo_id'];
+          echo "<tr>
+          <td><a data-toggle='modal' href='#divnombreungrp'>".$fila3['un_grupo_nombres']." ".$fila3['un_grupo_ap_pat']." ".$fila3['un_grupo_ap_mat']."</a></td>
+          <td><a data-toggle='modal' href='#divrutungrp'>".$fila3['un_grupo_rut']."</a></td>
+          <td>".$fila3['un_grupo_parent']."</td>
+          <td><a data-toggle='modal' href='#divdirungrp'>".$fila3['un_grupo_direccion']."</a></td>
+          <td><a data-toggle='modal' href='#divcomunaungrp'>".$fila3['un_grupo_comuna']."</a></td>
+          <td><a data-toggle='modal' href='#divciudadungrp'>".$fila3['un_grupo_ciudad']."</a></td>
+          <td><a data-toggle='modal' href='#divregionungrp'>".$fila3['un_grupo_region']."</a></td>
+          <td><a data-toggle='modal' href='#divecivilungrp'>".$fila3['un_grupo_ecivil']."</a></td>
+          <td><a data-toggle='modal' href='#divactivungrp'>".$fila3['un_grupo_actividad']."</a></td>
+          <td><a href='eliminar_padres2.php?var=".$un_grupo_alum_id."&var2=".$un_grupo_id."&var3=".$rut."'>Eliminar</a></td>
+          <td><a data-toggle='modal' href='#divagregaungrp'>Agregar</a></td>";
+  }
+  ?>
+  </tr>
+</table>
+        <div class='controls controls-row'>
+        -->
+              <p>
+              <legend>Antecedentes e ingresos del grupo familiar</legend>
+
+          <table class='table table-hover table table-bordered'>
+  <tr>
+    <th>Nombre</th>
+    <th>Rut</th>
+    <th>Edad</th>
+    <th>E.civil</th>
+    <th>Parent</th>
+    <th>P.Soc</th>
+    <th>P.Sal</th>
+    <th>N.Est</th>
+    <th>Actividad</th>
+    <th>Ingresos</th>
+    <th>Eliminar entrada</th>
+  </tr>
+  <?php
+              $resultado4=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
+            {
+          $persona_id=$fila2['id_persona_grupo'];
+          $persona_rut=$fila2['persona_rut'];
+          $id_ingreso=$fila2['id_ingreso'];
+          echo "<tr>
+          <td><a data-toggle='modal' href='#divnombregrp'>".$fila2['persona_nombres']." ".$fila2['persona_ap_pat']." ".$fila2['persona_ap_mat']."</a></td>
+          <td><a data-toggle='modal' href='#divrutgrp'>".$fila2['persona_rut']."</a></td>
+          <td><a data-toggle='modal' href='#divedadgrp'>".$fila2['persona_edad']."</a></td>
+          <td><a data-toggle='modal' href='#divecivilgrp'>".$fila2['persona_ecivil']."</a></td>
+          <td><a data-toggle='modal' href='#divparentgrp'>".$fila2['persona_parent']."</a></td>
+          <td><a data-toggle='modal' href='#divprev_socgrp'>".$fila2['persona_prev_soc']."</a></td>
+          <td><a data-toggle='modal' href='#divprev_salgrp'>".$fila2['persona_prev_sal']."</a></td>
+          <td><a data-toggle='modal' href='#divniv_estgrp'>".$fila2['persona_niv_est']."</a></td>
+          <td><a data-toggle='modal' href='#divactgrp'>".$fila2['persona_act']."</a></td>
+          <td><a data-toggle='modal' href='#divingresogrp'>".$fila2['ingreso_total']."</a></td>
+          <td><a href='eliminar_persona2.php?var=".$persona_rut."&var2=".$persona_id."&var3=".$rut."&var4=".$id_ingreso."'>Eliminar</a></td>";
+  }
+  ?>
+  </tr>
+</table>
+      <!-- Modal para actualizar nombre del padre / madre del un_grupo familiar-->
+            <div id="divnombreungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar nombre de los padres que no pertenecen al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="nombreungrp" action="actualizanombreungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Nombre de la persona</legend>
+                  <input type="text" id="nombre" name="nombre" class="span3">
+                  <legend>Apellido Paterno</legend>
+                  <input type="text" id="ap_pat" name="ap_pat" class="span3">
+                  <legend>Apellido Materno</legend>
+                  <input type="text" id="ap_mat" name="ap_mat" class="span3">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar nombre del padre / madre del un_grupo familiar-->
+        <!-- Modal para actualizar rut del un_grupo familiar-->
+            <div id="divrutungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Rut del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="rutungrp" action="actualizarutungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba el RUT</p>
+                  <input type="text" id="rutungrp" name="rutungrp" class="span4" placeholder="Formato: 12345678-9">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </select>
+
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar rut del un_grupo familiar-->
+        <!-- Modal para actualizar direccion del un_grupo familiar-->
+            <div id="divdirungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Dirección del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="dirungrp" action="actualizadirungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la dirección</p>
+                  <input type="text" id="dirungrp" name="dirungrp" class="span4">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar direccion del un_grupo familiar-->
+        <!-- Modal para actualizar comuna del un_grupo familiar-->
+            <div id="divcomunaungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Comuna del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="divcomunaungrp" action="actualizacomunaungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la comuna</p>
+                  <input type="text" id="comunaungrp" name="comunaungrp" class="span4">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar comuna del un_grupo familiar-->
+        <!-- Modal para actualizar ciudad del un_grupo familiar-->
+            <div id="divciudadungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Ciudad del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="divciudadungrp" action="actualizaciudadungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la Ciudad</p>
+                  <input type="text" id="ciudadungrp" name="ciudadungrp" class="span4">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar ciudad del un_grupo familiar-->
+        <!-- Modal para actualizar region del un_grupo familiar-->
+            <div id="divregionungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Región del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="regionungrp" action="actualizaregionungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <p>Escriba la región</p>
+                  <input type="text" id="regionungrp" name="regionungrp" class="span4">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar region del un_grupo familiar-->
+        <!-- Modal para actualizar estado civil del un_grupo familiar-->
+            <div id="divecivilungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Estado civil del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="ecivilungrp" action="actualizaecivilungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Seleccione el Estado civil</legend>
+                  <select id="ecivilungrp" name="ecivilungrp" required class="span2">
+                        <option value="0">Estado Civil</option>
+                        <option value="1">Soltero/a</option>
+                        <option value="2">Casado/a</option>
+                        <option value="3">Separado/a legalmente</option>
+                        <option value="4">Separado/a de hecho</option>
+                        <option value="5">Divorciado/a</option>
+                        <option value="6">Viudo/a</option>
+                        <option value="7">Conviviente</option>
+                    </select>
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar estado civil del un_grupo familiar-->
+        <!-- Modal para actualizar estado activ del un_grupo familiar-->
+            <div id="divactivungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Actividad del Padre / Madre que no pertenece al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="activungrp" action="actualizaactivungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Seleccione la actividad</legend>
+                  <select id="activungrp" name="activungrp" required class="span5">
+                          <option value="0">Actividad</option>
+                          <option value="1">Trabajador Dependiente o Pensionado con Renta Fija y/o Variable</option>
+                          <option value="2">Trabajador y/o Profesional Independiente</option>
+                          <option value="3">Comerciante o socio de Empresa Comercial Industrial o Constructora</option>
+                          <option value="4">Sostenedor de Establecimiento Educacional</option>
+                          <option value="5">Transportista de carga y pasajeros</option>
+                          <option value="6">Empresario Agrícola</option>
+                          <option value="7">Rentista de bienes raíces no agrícolas o de capitales mobiliarios</option>
+                          <option value="8">Persona dedicada a dos o más actividades de las indicadas en los lugares 01 a 07</option>
+                          <option value="9">Persona mayor de 18 y menor de 65 años, sin ocupación ni ingresos y que NO esté imposibilitada de trabajar</option>
+                          <option value="10">Cesante. Persona desvinculada de un trabajo remunerado por contrato u honorarios</option>
+                          <option value="11">Mayor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="12">Inválido, menor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="13">Dueña de casa, sin actividad remunerada</option>
+                          <option value="14">Estudiante de Enseñanza Básica o Media, o menores en edad preescolar</option>
+                          <option value="15">Estudiantes de Educación Superior, de Escuelas Matrices de las Fuerzas Armadas y de Orden o de Preuniversitarios.</option>
+                          <option value="16">Recién nacido</option>
+                          <option value="17">Estudiante y Trabajador</option>
+                        </select>
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Modal para actualizar estado activ del un_grupo familiar-->
+        <!-- Modal para agregar integrante  del un_grupo familiar-->
+            <div id="divagregaungrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Agregar Padres que no pertenecen al grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="agregaungrp" action="agregar_padres.php?var=<? echo $id_alum; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Nombres de la persona</legend>
+                  <input type="text" id="nombre" name="nombre" class="span3">
+                  <legend>Apellido Paterno</legend>
+                  <input type="text" id="ap_pat" name="ap_pat" class="span3">
+                  <legend>Apellido Materno</legend>
+                  <input type="text" id="ap_mat" name="ap_mat" class="span3">
+                  <legend>Rut</legend>
+                  <input type="text" id="un_grp_rut" name="un_grp_rut" class="span3">
+                  <legend>Seleccione el parentezco</legend>
+                  <select class="span2" id="parent" name="parent">
+                  <option value="Padre">Padre</option>
+                  <option value="Madre">Madre</option>
+                  </select>
+                  <legend>Dirección</legend>
+                  <input type="text" id="dirungrp" name="dirungrp" class="span4">
+                  <legend>Comuna</legend>
+                  <input type="text" id="comungrp" name="comungrp" class="span4">
+                  <legend>Ciudad</legend>
+                  <input type="text" id="cityungrp" name="cityungrp" class="span4">
+                  <legend>Región</legend>
+                  <input type="text" id="regungrp" name="regungrp" class="span4">
+                  <legend>Seleccione el Estado civil</legend>
+                  <select id="ecivilungrp" name="ecivilungrp" required class="span2">
+                        <option value="0">Estado Civil</option>
+                        <option value="1">Soltero/a</option>
+                        <option value="2">Casado/a</option>
+                        <option value="3">Separado/a legalmente</option>
+                        <option value="4">Separado/a de hecho</option>
+                        <option value="5">Divorciado/a</option>
+                        <option value="6">Viudo/a</option>
+                        <option value="7">Conviviente</option>
+                    </select>
+                    <legend>Seleccione la actividad</legend>
+                  <select id="activungrp" name="activungrp" required class="span10">
+                          <option value="0">Actividad</option>
+                          <option value="1">Trabajador Dependiente o Pensionado con Renta Fija y/o Variable</option>
+                          <option value="2">Trabajador y/o Profesional Independiente</option>
+                          <option value="3">Comerciante o socio de Empresa Comercial Industrial o Constructora</option>
+                          <option value="4">Sostenedor de Establecimiento Educacional</option>
+                          <option value="5">Transportista de carga y pasajeros</option>
+                          <option value="6">Empresario Agrícola</option>
+                          <option value="7">Rentista de bienes raíces no agrícolas o de capitales mobiliarios</option>
+                          <option value="8">Persona dedicada a dos o más actividades de las indicadas en los lugares 01 a 07</option>
+                          <option value="9">Persona mayor de 18 y menor de 65 años, sin ocupación ni ingresos y que NO esté imposibilitada de trabajar</option>
+                          <option value="10">Cesante. Persona desvinculada de un trabajo remunerado por contrato u honorarios</option>
+                          <option value="11">Mayor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="12">Inválido, menor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="13">Dueña de casa, sin actividad remunerada</option>
+                          <option value="14">Estudiante de Enseñanza Básica o Media, o menores en edad preescolar</option>
+                          <option value="15">Estudiantes de Educación Superior, de Escuelas Matrices de las Fuerzas Armadas y de Orden o de Preuniversitarios.</option>
+                          <option value="16">Recién nacido</option>
+                          <option value="17">Estudiante y Trabajador</option>
+                        </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para agregar integrante del un_grupo familiar-->
+        <!-- Insertar miembro del grupo familiar mas sus ingresos -->
+<table>
+<tr>
+<td>
+<i class="icon-upload"></i> <a href="modificar2.php?page=agregar_integrante&rut=<? echo $rut; ?>&id=<?php echo $id_alum; ?>">Agregar integrante</a>
+</td>
+</tr>
+<tr>
+  <td>
+    <?php
+      if(isset($_GET['page'])){
+          $page = $_GET['page'];
+          include($page.".php");
+            }
+           else
+          echo "";
+     ?>
+    </td>
+</tr>
+</table>
+        <!--//////////////////////////////////////////// MODALES PARA ANTECEDENTES E INGRESOS DEL GRUPO FAMILIAR //////////////////////////////////-->
+        <!-- Modal para actualizar nombre de la persona del grupo familiar-->
+            <div id="divnombregrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar nombre de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="nombregrp" action="actualizanombregrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Nombre de la persona</legend>
+                  <input type="text" id="nombre" name="nombre" class="span3">
+                  <legend>Apellido Paterno</legend>
+                  <input type="text" id="ap_pat" name="ap_pat" class="span3">
+                  <legend>Apellido Materno</legend>
+                  <input type="text" id="ap_mat" name="ap_mat" class="span3">
+                  <legend>Seleccione persona por rut</legend>
+                  <select id="persona_rut" name="persona_rut" required class="span3">
+                          <option value="0">RUT</option>
+                  <?php
+              $resultado5=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+
+              while($fila3 = $resultado5->fetch_array(MYSQLI_ASSOC))
+              {
+               $id_persona=$fila3['id_persona_grupo'];
+                echo"<option value=".$fila3['persona_rut'].">".$fila3['persona_rut']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar nombre del padre / madre del un_grupo familiar-->
+        <!-- Modal para actualizar rut de la persona del grupo familiar-->
+            <div id="divrutgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar RUT de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="rutgrp" action="actualizarutgrp2.php?var=<? echo $id_persona; ?>&var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese el RUT a modificar</legend>
+                  <input type="text" id="rut" name="rut" class="span3">
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar rut de la persona del grupo familiar-->
+        <!-- Modal para actualizar edad de la persona del grupo familiar-->
+            <div id="divedadgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Edad de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="rutgrp" action="actualizaedadgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese la edad a modificar</legend>
+                  <input type="text" id="edad" name="edad" class="span3">
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar edad de la persona del grupo familiar-->
+        <!-- Modal para actualizar estado civil de la persona del grupo familiar-->
+            <div id="divecivilgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Estado Civil de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="ecivilgrp" action="actualizaecivilgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese estado civil a modificar</legend>
+                  <select id="ecivil" name="ecivil" class="span2">
+                 <option value="0">Estado Civil</option>
+                 <option value="1">Soltero</option>
+                 <option value="2">Casado</option>
+                 <option value="3">Separado legalmente</option>
+                 <option value="4">Separado de hecho</option>
+                 <option value="5">Divorciado</option>
+                 <option value="6">Viudo</option>
+                 <option value="7">Conviviente</option>
+          </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar estado civil de la persona del grupo familiar-->
+        <!-- Modal para actualizar parentesco de la persona del grupo familiar-->
+            <div id="divparentgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Parentesco de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="parentgrp" action="actualizaparentgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese parentesco a modificar</legend>
+                  <select id="parent" name="parent" class="span4">
+                        <option value="0">Parentesco</option>
+                        <option value="1">Padre</option>
+                        <option value="2">Padrastro</option>
+                        <option value="3">Madre</option>
+                        <option value="4">Madrastra</option>
+                        <option value="5">Hermano(a) o Hermanastro(a)</option>
+                        <option value="6">Hijo(a)</option>
+                        <option value="7">Cónyuge</option>
+                        <option value="8">Abuelo(a)</option>
+                        <option value="9">Tío(a)</option>
+                        <option value="10">Primo(a)</option>
+                        <option value="11">Sobrino(a)</option>
+                        <option value="12">Suegro(a)</option>
+                        <option value="13">Cuñado(a)</option>
+                        <option value="14">Otro</option>
+                        <option value="15">Pareja</option>
+                        <option value="16">Yo</option>
+                      </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar parentesco de la persona del grupo familiar-->
+        <!-- Modal para actualizar prevision social de la persona del grupo familiar-->
+            <div id="divprev_socgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Prev. Social de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="prev_socgrp" action="actualizaprev_socgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese prev. social a modificar</legend>
+                  <select id="prev_socgrp" name="prev_socgrp" required class="span4">
+                        <option value="0">Prev. Social</option>
+                        <option value="1">AFP</option>
+                        <option value="2">INP (Caja E.E. Part., Públicos, Municipios, etc.)</option>
+                        <option value="3">CAPREDENA</option>
+                        <option value="4">DIPRECA</option>
+                        <option value="5">Otra previsión</option>
+                        <option value="6">Sin previsión</option>
+                      </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar prev. social de la persona del grupo familiar-->
+        <!-- Modal para actualizar prevision salud de la persona del grupo familiar-->
+            <div id="divprev_salgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Prev. Salud de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="prev_salgrp" action="actualizaprev_salgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese prev. salud a modificar</legend>
+                  <select id="prev_salgrp" name="prev_salgrp" required class="span4">
+                        <option value="0">Prev. Salud</option>
+                        <option value="1">FONASA</option>
+                        <option value="2">ISAPRE</option>
+                        <option value="3">Institucional (F.F.A.A., Carabineros, etc)</option>
+                        <option value="4">Otros seguros de salud</option>
+                        <option value="5">Sin previsión</option>
+                      </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar prev. salud de la persona del grupo familiar-->
+        <!-- Modal para actualizar Nivel de estudios persona del grupo familiar-->
+            <div id="divniv_estgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Nivel de estudios de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="niv_estgrp" action="actualizaniv_estgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese nivel de estudios a modificar</legend>
+                  <select id="niv_estgrp" name="niv_estgrp" required class="span4">
+                        <option value="0">Nivel de estudios</option>
+                        <option value="1">Sin estudios</option>
+                        <option value="2">Enseñanza Básica Incompleta</option>
+                        <option value="3">Enseñanza Básica Completa</option>
+                        <option value="4">Enseñanza Media o Técnico Profesional de nivel medio Incompleta</option>
+                        <option value="5">Enseñanza Media o Técnico Profesional de nivel medio Completa</option>
+                        <option value="6">Enseñanza Técnica Nivel Superior Incompleta</option>
+                        <option value="7">Enseñanza Técnica Nivel Superior Completa o Profesional Incompleta</option>
+                        <option value="8">Enseñanza Profesional Completa</option>
+                      </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar Nivel de estudios persona del grupo familiar-->
+        <!-- Modal para actualizar Actividad persona del grupo familiar-->
+            <div id="divactgrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Actividad de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="niv_estgrp" action="actualizaactgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingrese actividad a modificar</legend>
+                  <select id="actgrp" name="actgrp" required class="span4">
+                        <option value="0">Actividad</option>
+                          <option value="1">Trabajador Dependiente o Pensionado con Renta Fija y/o Variable</option>
+                          <option value="2">Trabajador y/o Profesional Independiente</option>
+                          <option value="3">Comerciante o socio de Empresa Comercial Industrial o Constructora</option>
+                          <option value="4">Sostenedor de Establecimiento Educacional</option>
+                          <option value="5">Transportista de carga y pasajeros</option>
+                          <option value="6">Empresario Agrícola</option>
+                          <option value="7">Rentista de bienes raíces no agrícolas o de capitales mobiliarios</option>
+                          <option value="8">Persona dedicada a dos o más actividades de las indicadas en los lugares 01 a 07</option>
+                          <option value="9">Persona mayor de 18 y menor de 65 años, sin ocupación ni ingresos y que NO esté imposibilitada de trabajar</option>
+                          <option value="10">Cesante. Persona desvinculada de un trabajo remunerado por contrato u honorarios</option>
+                          <option value="11">Mayor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="12">Inválido, menor de 65 años, sin pensión ni otros ingresos</option>
+                          <option value="13">Dueña de casa, sin actividad remunerada</option>
+                          <option value="14">Estudiante de Enseñanza Básica o Media, o menores en edad preescolar</option>
+                          <option value="15">Estudiantes de Educación Superior, de Escuelas Matrices de las Fuerzas Armadas y de Orden o de Preuniversitarios.</option>
+                          <option value="16">Recién nacido</option>
+                          <option value="17">Estudiante y Trabajador</option>
+                      </select>
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar Actividad de estudios persona del grupo familiar-->
+        <!-- Modal para actualizar ingresos persona del grupo familiar-->
+            <div id="divingresogrp" class="modal hide fade in" style="display: none;">
+              <div class="modal-header">
+                <a data-dismiss="modal" class="close">×</a>
+                   <h3>Actualizar Ingresos de un integrante del grupo familiar</h3>
+              </div>
+                  <div class="modal-body">
+                  <form name="ingresogrp" action="actualizaingresogrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <legend>Ingresos a modificar</legend>
+                  <input type="text" id="sueldos" name="sueldos" class="span2" placeholder="Sueldos y Pensiones">
+                  <input type="text" id="hono" name="hono" class="span2" placeholder="Honorarios">
+                  <legend></legend>
+                  <input type="text" id="retiro" name="retiro" class="span2" placeholder="Retiro">
+                  <input type="text" id="pen" name="pen" class="span3" placeholder="P. de alimentos y/o Aporte de parientes">
+                  <legend></legend>
+                  <input type="text" id="act_in" name="act_in" class="span2" placeholder="Actividades Indep.">
+                  <input type="text" id="otros" name="otros" class="span3" placeholder="Otros (Dividendos, ganacias de capital)">
+                  <legend>Seleccione persona</legend>
+                  <select id="persona_rut" name="persona_rut" class="span4">
+                          <option value="0">Nombre</option>
+                  <?php
+              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              FROM alumnos, persona_grupo, ingresos
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $i=1;
+              while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
+              {
+
+                echo"<option value=".$fila4['persona_rut'].">".$fila4['persona_nombres']." ".$fila4['persona_ap_pat']." ".$fila4['persona_ap_mat']."</option>";
+
+              }
+         ?>
+                  </select>
+                  </div>
+                <div class="modal-footer">
+                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
+                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
+                </form>
+              </div>
+            </div>
+        <!-- Fin Modal para actualizar ingresos de estudios persona del grupo familiar-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Informática - UMCE 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

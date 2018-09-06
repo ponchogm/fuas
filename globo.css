@@ -1,0 +1,23 @@
+/* CSS Document */
+a.detalle1 { /* Estilos del texto que tiene el tooltip */
+position: relative;
+z-index: 40;
+cursor: hand;
+/* opciones: Default Hand Move e-resize ne-resize nw-resize n-resize se-resize sw-resize s-resize w-resize text wait help  */
+text-decoration: underline;
+}
+a.detalle1:hover {z-index: 41; text-decoration: none;}
+a.detalle1 css1 {display: none}
+a.detalle1:hover css1 { /* Estilos de la descripción */
+font-family: monospace;
+/* opciones: serif "sans serif" cursive fanct monospace */
+display: block;
+position: absolute;
+/* absolute fixed static relative */
+top: 1em; left: -25em;
+width: 400px;
+border: 1px solid #0cf;
+background: #000000;
+color: #ffffff;
+text-align: left;
+}
