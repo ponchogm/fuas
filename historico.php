@@ -114,7 +114,7 @@ function validaRut(rut){
           </form>
           <span id="mensaje"></span>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <? echo $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
             <li><a href="salir.php"><i class="icon-off"></i> cerrar sesión</a></li>
           </ul>

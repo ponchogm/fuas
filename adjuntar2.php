@@ -68,7 +68,7 @@ $rut=$_GET['rut'];
         <a class="brand" href="#">Beneficios</a>
         <ul class="nav pull-right">
             <li><a href="#"><i class="icon-upload"></i> Adjuntar documentos</a></li>
-            <li><a href="modificar2.php?rut=<? echo $rut; ?>"><i class="icon-edit"></i> Modificar mis datos</a></li>
+            <li><a href="modificar2.php?rut=<?phpecho $rut; ?>"><i class="icon-edit"></i> Modificar mis datos</a></li>
             <li><a href="salir2.php"><i class="icon-off"></i> cerrar sesión</a></li>
             <li class="divider-vertical"></li>
           <li><a href="#">UMCE - DAE</a></li>
@@ -110,7 +110,7 @@ $rut=$_GET['rut'];
         </div>
 
 
-        <form class="well" action="procesaArchivos2.php?user=<? echo $rut; ?>" method="post" enctype="multipart/form-data">
+        <form class="well" action="procesaArchivos2.php?user=<?phpecho $rut; ?>" method="post" enctype="multipart/form-data">
           <legend>Seleccione los archivos desde su computador mediante los botones</legend>
           <div class="alert alert-info">
             <strong>Importante:</strong> El envío los documentos digitalizados debe regisrse por las siguientes normas:

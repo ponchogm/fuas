@@ -56,13 +56,13 @@ function enviar_formulario(){
         <a class="brand" href="#">Beneficios</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><a href="print_formalum.php?var7=<? echo $rut; ?>"><i class="icon-print"></i> Imprimir Formulario</a></li>
+            <li><a href="print_formalum.php?var7=<?phpecho $rut; ?>"><i class="icon-print"></i> Imprimir Formulario</a></li>
             <li class="divider-vertical"></li>
           </ul>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <? echo $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
-            <li><a href="form3.php?var=<? echo $rut; ?>"><i class="icon-off"></i> Cerrar</a></li>
+            <li><a href="form3.php?var=<?phpecho $rut; ?>"><i class="icon-off"></i> Cerrar</a></li>
           </ul>
           </ul>
         </div><!-- /.nav-collapse -->
@@ -163,7 +163,7 @@ function enviar_formulario(){
                    <h3>Actualizar dirección del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="dir" action="actualizadir2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="dir" action="actualizadir2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Escriba su dirección actual.</p>
                   <input type="text" id="dir" name="dir" class="span4">
 
@@ -182,7 +182,7 @@ function enviar_formulario(){
                    <h3>Actualizar comuna del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="comuna" action="actualizacomuna2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="comuna" action="actualizacomuna2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Escriba su comuna actual.</p>
                   <input type="text" id="comuna" name="comuna" class="span4">
 
@@ -201,7 +201,7 @@ function enviar_formulario(){
                    <h3>Actualizar Teléfono fijo del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="fono" action="actualizafijo2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="fono" action="actualizafijo2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Escriba su teléfono fijo actual.</p>
                   <input type="text" id="fijo" name="fijo" class="span3">
 
@@ -220,7 +220,7 @@ function enviar_formulario(){
                    <h3>Actualizar Celular del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="celu" action="actualizacel2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="celu" action="actualizacel2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Escriba su teléfono celular actual.</p>
                   <input type="text" id="cel" name="cel" class="span3">
 
@@ -239,7 +239,7 @@ function enviar_formulario(){
                    <h3>Actualizar Email del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="mail" action="actualizamail2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="mail" action="actualizamail2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Escriba su Email actual.</p>
                   <input type="text" id="email" name="email" class="span4">
 
@@ -258,7 +258,7 @@ function enviar_formulario(){
                    <h3>Actualizar nacionalidad del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="nac" action="actualizanac2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="nac" action="actualizanac2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Indique su nacionalidad.</p>
                   <input type="text" id="nac" name="nac" class="span4">
 
@@ -277,7 +277,7 @@ function enviar_formulario(){
                    <h3>Actualizar discapacidad del alumno</h3>
               </div>
                   <div class="modal-body">
-                  <form name="discap" action="actualizadiscap2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="discap" action="actualizadiscap2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Indique que discapacidad sufre.</p>
                   <input type="text" id="discap" name="discap" class="span4">
 
@@ -296,7 +296,7 @@ function enviar_formulario(){
                    <h3>Actualizar Etnia del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="pueblo" action="actualizapueblo2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="pueblo" action="actualizapueblo2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Indique a que pueblo originario pertenece.</p>
                   <input type="text" id="pueblo" name="pueblo" class="span4">
 
@@ -344,7 +344,7 @@ function enviar_formulario(){
                          <h3>Actualizar Beca interna a la cual postula</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="postula" action="actualizapostula2.php?var2=<? echo $rut; ?>" method="post">
+                  <form name="postula" action="actualizapostula2.php?var2=<?phpecho $rut; ?>" method="post">
                   <p>Seleccione la beca a la cual quiere postular</p>
                   <select id="postula" name="postula">
                     <option value="No postula">No postula</option>
@@ -385,10 +385,10 @@ function enviar_formulario(){
             }
           ?>
             <tr>
-              <td><a data-toggle='modal' href='#divdirgrp'><? echo $dirgrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divcomunagrp'><? echo $comunagrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divciudadgrp'><? echo $ciudadgrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divfonogrp'><? echo $fonogrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divdirgrp'><?phpecho $dirgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divcomunagrp'><?phpecho $comunagrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divciudadgrp'><?phpecho $ciudadgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divfonogrp'><?phpecho $fonogrupo; ?></a></td>
             </tr>
           </table>
         </div>
@@ -399,7 +399,7 @@ function enviar_formulario(){
                    <h3>Actualizar dirección del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="dirgrp" action="actualizadirgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="dirgrp" action="actualizadirgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la nueva dirección del grupo familiar</p>
                   <input type="text" id="dirgrp" name="dirgrp" class="span4">
                   </div>
@@ -417,7 +417,7 @@ function enviar_formulario(){
                    <h3>Actualizar comuna del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="comunagrp" action="actualizacomunagrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="comunagrp" action="actualizacomunagrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la comuna donde reside el grupo familiar</p>
                   <input type="text" id="comunagrp" name="comunagrp" class="span4">
                  </div>
@@ -435,7 +435,7 @@ function enviar_formulario(){
                    <h3>Actualizar ciudad del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="ciudadgrp" action="actualizaciudadgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="ciudadgrp" action="actualizaciudadgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la ciudad donde reside el grupo familiar</p>
                   <input type="text" id="ciudadgrp" name="ciudadgrp" class="span4">
                   </select>
@@ -455,7 +455,7 @@ function enviar_formulario(){
                    <h3>Actualizar teléfono del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="fonogrp" action="actualizafonogrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="fonogrp" action="actualizafonogrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba el número de telefono del grupo familiar</p>
                   <input type="text" id="fonogrp" name="fonogrp" class="span4">
                   </select>
@@ -475,7 +475,7 @@ function enviar_formulario(){
                    <h3>Actualizar condición de la vivienda del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="vivgrp" action="actualizavivgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="vivgrp" action="actualizavivgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Seleccione la beca a la cual quiere postular</p>
                   <select class="span5" id="vivgrp" name="vivgrp">
                  <option value="1">Propietario Vivienda Pagada</option>
@@ -499,7 +499,7 @@ function enviar_formulario(){
               <th class='span3'>Condición de la vivienda</th>
             </tr>
             <tr>
-              <td><a data-toggle='modal' href='#divvivgrp'><? echo $viv_tipo; ?></a></td>
+              <td><a data-toggle='modal' href='#divvivgrp'><?phpecho $viv_tipo; ?></a></td>
             </tr>
           </table>
         </div>
@@ -600,7 +600,7 @@ function enviar_formulario(){
                    <h3>Actualizar nombre de los padres que no pertenecen al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="nombreungrp" action="actualizanombreungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="nombreungrp" action="actualizanombreungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Nombre de la persona</legend>
                   <input type="text" id="nombre" name="nombre" class="span3">
                   <legend>Apellido Paterno</legend>
@@ -627,7 +627,7 @@ function enviar_formulario(){
                    <h3>Actualizar Rut del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="rutungrp" action="actualizarutungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="rutungrp" action="actualizarutungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba el RUT</p>
                   <input type="text" id="rutungrp" name="rutungrp" class="span4" placeholder="Formato: 12345678-9">
                   <legend>Seleccione el parentezco</legend>
@@ -652,7 +652,7 @@ function enviar_formulario(){
                    <h3>Actualizar Dirección del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="dirungrp" action="actualizadirungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="dirungrp" action="actualizadirungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la dirección</p>
                   <input type="text" id="dirungrp" name="dirungrp" class="span4">
                   <legend>Seleccione el parentezco</legend>
@@ -675,7 +675,7 @@ function enviar_formulario(){
                    <h3>Actualizar Comuna del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="divcomunaungrp" action="actualizacomunaungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="divcomunaungrp" action="actualizacomunaungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la comuna</p>
                   <input type="text" id="comunaungrp" name="comunaungrp" class="span4">
                   <legend>Seleccione el parentezco</legend>
@@ -698,7 +698,7 @@ function enviar_formulario(){
                    <h3>Actualizar Ciudad del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="divciudadungrp" action="actualizaciudadungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="divciudadungrp" action="actualizaciudadungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la Ciudad</p>
                   <input type="text" id="ciudadungrp" name="ciudadungrp" class="span4">
                   <legend>Seleccione el parentezco</legend>
@@ -721,7 +721,7 @@ function enviar_formulario(){
                    <h3>Actualizar Región del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="regionungrp" action="actualizaregionungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="regionungrp" action="actualizaregionungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <p>Escriba la región</p>
                   <input type="text" id="regionungrp" name="regionungrp" class="span4">
                   <legend>Seleccione el parentezco</legend>
@@ -744,7 +744,7 @@ function enviar_formulario(){
                    <h3>Actualizar Estado civil del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="ecivilungrp" action="actualizaecivilungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="ecivilungrp" action="actualizaecivilungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Seleccione el Estado civil</legend>
                   <select id="ecivilungrp" name="ecivilungrp" required class="span2">
                         <option value="0">Estado Civil</option>
@@ -776,7 +776,7 @@ function enviar_formulario(){
                    <h3>Actualizar Actividad del Padre / Madre que no pertenece al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="activungrp" action="actualizaactivungrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="activungrp" action="actualizaactivungrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Seleccione la actividad</legend>
                   <select id="activungrp" name="activungrp" required class="span5">
                           <option value="0">Actividad</option>
@@ -818,7 +818,7 @@ function enviar_formulario(){
                    <h3>Agregar Padres que no pertenecen al grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="agregaungrp" action="agregar_padres.php?var=<? echo $id_alum; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="agregaungrp" action="agregar_padres.php?var=<?phpecho $id_alum; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Nombres de la persona</legend>
                   <input type="text" id="nombre" name="nombre" class="span3">
                   <legend>Apellido Paterno</legend>
@@ -884,7 +884,7 @@ function enviar_formulario(){
 <table>
 <tr>
 <td>
-<i class="icon-upload"></i> <a href="modificar2.php?page=agregar_integrante&rut=<? echo $rut; ?>&id=<?php echo $id_alum; ?>">Agregar integrante</a>
+<i class="icon-upload"></i> <a href="modificar2.php?page=agregar_integrante&rut=<?phpecho $rut; ?>&id=<?php echo $id_alum; ?>">Agregar integrante</a>
 </td>
 </tr>
 <tr>
@@ -908,7 +908,7 @@ function enviar_formulario(){
                    <h3>Actualizar nombre de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="nombregrp" action="actualizanombregrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="nombregrp" action="actualizanombregrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Nombre de la persona</legend>
                   <input type="text" id="nombre" name="nombre" class="span3">
                   <legend>Apellido Paterno</legend>
@@ -946,7 +946,7 @@ function enviar_formulario(){
                    <h3>Actualizar RUT de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="rutgrp" action="actualizarutgrp2.php?var=<? echo $id_persona; ?>&var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="rutgrp" action="actualizarutgrp2.php?var=<?phpecho $id_persona; ?>&var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese el RUT a modificar</legend>
                   <input type="text" id="rut" name="rut" class="span3">
                   <legend>Seleccione persona</legend>
@@ -980,7 +980,7 @@ function enviar_formulario(){
                    <h3>Actualizar Edad de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="rutgrp" action="actualizaedadgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="rutgrp" action="actualizaedadgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese la edad a modificar</legend>
                   <input type="text" id="edad" name="edad" class="span3">
                   <legend>Seleccione persona</legend>
@@ -1014,7 +1014,7 @@ function enviar_formulario(){
                    <h3>Actualizar Estado Civil de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="ecivilgrp" action="actualizaecivilgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="ecivilgrp" action="actualizaecivilgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese estado civil a modificar</legend>
                   <select id="ecivil" name="ecivil" class="span2">
                  <option value="0">Estado Civil</option>
@@ -1057,7 +1057,7 @@ function enviar_formulario(){
                    <h3>Actualizar Parentesco de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="parentgrp" action="actualizaparentgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="parentgrp" action="actualizaparentgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese parentesco a modificar</legend>
                   <select id="parent" name="parent" class="span4">
                         <option value="0">Parentesco</option>
@@ -1109,7 +1109,7 @@ function enviar_formulario(){
                    <h3>Actualizar Prev. Social de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="prev_socgrp" action="actualizaprev_socgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="prev_socgrp" action="actualizaprev_socgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese prev. social a modificar</legend>
                   <select id="prev_socgrp" name="prev_socgrp" required class="span4">
                         <option value="0">Prev. Social</option>
@@ -1151,7 +1151,7 @@ function enviar_formulario(){
                    <h3>Actualizar Prev. Salud de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="prev_salgrp" action="actualizaprev_salgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="prev_salgrp" action="actualizaprev_salgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese prev. salud a modificar</legend>
                   <select id="prev_salgrp" name="prev_salgrp" required class="span4">
                         <option value="0">Prev. Salud</option>
@@ -1192,7 +1192,7 @@ function enviar_formulario(){
                    <h3>Actualizar Nivel de estudios de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="niv_estgrp" action="actualizaniv_estgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="niv_estgrp" action="actualizaniv_estgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese nivel de estudios a modificar</legend>
                   <select id="niv_estgrp" name="niv_estgrp" required class="span4">
                         <option value="0">Nivel de estudios</option>
@@ -1236,7 +1236,7 @@ function enviar_formulario(){
                    <h3>Actualizar Actividad de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="niv_estgrp" action="actualizaactgrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="niv_estgrp" action="actualizaactgrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingrese actividad a modificar</legend>
                   <select id="actgrp" name="actgrp" required class="span4">
                         <option value="0">Actividad</option>
@@ -1289,7 +1289,7 @@ function enviar_formulario(){
                    <h3>Actualizar Ingresos de un integrante del grupo familiar</h3>
               </div>
                   <div class="modal-body">
-                  <form name="ingresogrp" action="actualizaingresogrp2.php?var2=<? echo $id_alumno; ?>&var3=<? echo $rut; ?>" method="post">
+                  <form name="ingresogrp" action="actualizaingresogrp2.php?var2=<?phpecho $id_alumno; ?>&var3=<?phpecho $rut; ?>" method="post">
                   <legend>Ingresos a modificar</legend>
                   <input type="text" id="sueldos" name="sueldos" class="span2" placeholder="Sueldos y Pensiones">
                   <input type="text" id="hono" name="hono" class="span2" placeholder="Honorarios">

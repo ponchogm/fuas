@@ -9,7 +9,7 @@ $rut=$_GET['rut'];
 </head>
 <title>Pagina ingresos</title>
 <body>
-<form name="ingresos" method="post" action="insertar_integrante.php?rut=<? echo $rut; ?>&id=<?php echo $id_alum; ?>">
+<form name="ingresos" method="post" action="insertar_integrante.php?rut=<?phpecho $rut; ?>&id=<?php echo $id_alum; ?>">
 <div class="controls controls-row">
                   <br>
                   <input type="text" id="nombre_grupo" name="nombre_grupo" class="span2" placeholder="Nombres">

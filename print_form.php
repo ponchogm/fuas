@@ -80,7 +80,7 @@ $rut=$_GET['rut'];
   	?>
     <legend>Antecedentes del estudiante</legend>
     <p>
-    Código de carrera: <? echo $cod_car; ?>
+    Código de carrera: <?phpecho $cod_car; ?>
     <table  width="100%" border="1">
         <tr>
           <td><strong>Nombre</strong></td>
@@ -89,10 +89,10 @@ $rut=$_GET['rut'];
           <td><strong>Año ingreso</strong></td>
         </tr>
         <tr>
-          <td><? echo utf8_encode($nombre); ?></td>
-          <td><? echo $rut; ?></td>
-          <td><? echo $fnac; ?></td>
-          <td><? echo $ingreso; ?></td>
+          <td><?phpecho utf8_encode($nombre); ?></td>
+          <td><?phpecho $rut; ?></td>
+          <td><?phpecho $fnac; ?></td>
+          <td><?phpecho $ingreso; ?></td>
         </tr>
         <tr>
           <td><strong>Dirección</strong></td>
@@ -101,10 +101,10 @@ $rut=$_GET['rut'];
           <td><strong>Email</strong></td>
         </tr>
         <tr>
-          <td><? echo $direccion; ?></td>
-          <td><? echo $comuna; ?></td>
-          <td><? echo $celular ."-". $telefono; ?></td>
-          <td><? echo $correo; ?></td>
+          <td><?phpecho $direccion; ?></td>
+          <td><?phpecho $comuna; ?></td>
+          <td><?phpecho $celular ."-". $telefono; ?></td>
+          <td><?phpecho $correo; ?></td>
         </tr>
         <tr>
           <td><strong>Nacionalidad</strong></td>
@@ -113,9 +113,9 @@ $rut=$_GET['rut'];
           <td><strong>Género</strong></td>
         </tr>
         <tr>
-          <td><? echo $nacionalidad; ?></td>
-          <td><? echo $discap; ?></td>
-          <td><? echo $porig; ?></td>
+          <td><?phpecho $nacionalidad; ?></td>
+          <td><?phpecho $discap; ?></td>
+          <td><?phpecho $porig; ?></td>
           <?php
 		  if ($sexos=='M'){
 			  $sexo='Masculino';
@@ -124,7 +124,7 @@ $rut=$_GET['rut'];
 			  $sexo='Femenino';
 		  }
 		  ?>
-          <td><? echo $sexo; ?></td>
+          <td><?phpecho $sexo; ?></td>
         </tr>
     </table>
     <table width="100%" border="1">
@@ -132,7 +132,7 @@ $rut=$_GET['rut'];
           <td><strong>Carrera</strong></td>
       </tr>
         <tr>
-          <td><? echo $carrera; ?></td>
+          <td><?phpecho $carrera; ?></td>
         </tr>
     </table>
     <legend>Beneficios del estudiante</legend>
@@ -218,11 +218,11 @@ $rut=$_GET['rut'];
             }
           ?>
       <tr>
-        <td><? echo $dirgrupo; ?></td>
-        <td><? echo $comunagrupo; ?></td>
-        <td><? echo $ciudadgrupo; ?></td>
-        <td><? echo $fonogrupo; ?></td>
-        <td><? echo $viv_tipo; ?></td>
+        <td><?phpecho $dirgrupo; ?></td>
+        <td><?phpecho $comunagrupo; ?></td>
+        <td><?phpecho $ciudadgrupo; ?></td>
+        <td><?phpecho $fonogrupo; ?></td>
+        <td><?phpecho $viv_tipo; ?></td>
       </tr>
     </table>
     <table width="100%" border="1">

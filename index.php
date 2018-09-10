@@ -1,24 +1,21 @@
 <?php
-//$lock='open';
-$lock='close';
+$lock='open';
+//$lock='close';
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
-
-    <script type="text/javascript" src="bootstrap/js/prototype-1.6.0.3.js"></script>
     <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Beneficios 2018 - Universidad Metropolitana de Ciencias de la Educación</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-
-    <!-- Le styles -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../img/templates/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 0px;
         padding-bottom: 40px;
       }
 
@@ -50,50 +47,12 @@ $lock='close';
       }
 
     </style>
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <!-- Javascript para agregar campos en forma dinámica Luis García 2013 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">Beneficios 2018</a>
-        <ul class="nav pull-right">
-          <li><a href="#">Universidad Metropolitana de Ciencias de la Educación - Dirección de asuntos estudiantiles</a></li>
-        </ul>
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
+  <?php include "cabecera.php"; ?>
     <div class="container">
-
-      <!-- Cabecera del formulario -->
-      <div class="row-fluid">
-        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica 2018</h3></div>
-        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>
-        <p>
-      </div>
-     </div>  <!-- /container -->
-    <div class="container">
-
     <?php if($lock == 'open'): ?>
       <form class="form-signin" method="post" action="control2.php">
         <h2 class="form-signin-heading">Ingrese sus datos</h2>
@@ -110,59 +69,11 @@ $lock='close';
     </h6>
     <p>
         <p>
-        <!-- Comento el alerta
-          <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            <strong>RECUERDA:</strong> Si te das cuenta que luego de llenar el formulario olvidaste algo o aparece alg&uacute;n error, debes VOLVER A INGRESAR A TU SESI&Oacute;N, ir al extremo
-            superior de la p&aacute;gina y pinchar la opci&oacute;n "MODIFICAR DATOS", donde podr&aacute;s corregir la informaci&oacute;n.
-          </div>
-          Fin del comenario del alerta//-->
+        
 
     <p><h4><span id="mensaje"></span></h4></p>
       </div>
-      <script type="text/javascript">
-/**
- * Funci�n que valida y devuelve el rut con formato 0012345678-9
- * @param rut Cadena con el rut a validar y formatear
- * @return boolean
- *
- * @author Jorge Andrade M.
- */
-function validaRut(rut){
-    var rexp = new RegExp(/^([0-9])+\-([kK0-9])+$/);
-    if(rut.match(rexp)){
-        var RUT   = rut.split("-");
-        var elRut = RUT[0].toArray();
-        var factor  = 2;
-        var suma  = 0;
-        var dv;
-        for(i=(elRut.length-1); i>=0; i--){
-            factor = factor > 7 ? 2 : factor;
-            suma += parseInt(elRut[i])*parseInt(factor++);
-        }
-        dv = 11 -(suma % 11);
-        if(dv == 11){
-            dv = 0;
-        }else if (dv == 10){
-            dv = "k";
-        }
 
-        if(dv == RUT[1].toLowerCase()){
-            $('mensaje').update("");
-            return true;
-        }else{
-            $('mensaje').update("El rut es incorrecto").show();
-            return false;
-        }
-    }else{
-        $('mensaje').update("Formato incorrecto. El formato correcto es 12345678-9").show();
-        return false;
-    }
-}
-    Event.observe('rut','blur',function(){
-        validaRut($F('rut'));
-    });
-</script>
  <p>
   <p>
   <p>
@@ -177,7 +88,7 @@ function validaRut(rut){
       <?php endif; ?>
       <?php if($lock == 'close'): ?>
       <div class="container" style="text-align:center">
-      <h4>El proceso de renovación de beneficios para el 2017 a finalizado</h6>
+      <h4>El proceso de renovación de beneficios para el 2018 a finalizado</h6>
       </div>
         <hr>
       <footer>
@@ -187,21 +98,5 @@ function validaRut(rut){
     <?php endif; ?>
     </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
   </body>
 </html>

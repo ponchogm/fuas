@@ -65,10 +65,10 @@ function enviar_formulario(){
         <a class="brand" href="#">Beneficios</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><a href="hero2.php?rut=<? echo $rut; ?>"><i class="icon-edit"></i> Modificar año de búsqueda</a></li>
+            <li><a href="hero2.php?rut=<?phpecho $rut; ?>"><i class="icon-edit"></i> Modificar año de búsqueda</a></li>
           </ul>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <? echo $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
             <li><a href="salir.php"><i class="icon-off"></i> cerrar sesión</a></li>
           </ul>
@@ -211,10 +211,10 @@ function enviar_formulario(){
             }
           ?>
             <tr>
-              <td><? echo $dirgrupo; ?></td>
-              <td><? echo $comunagrupo; ?></td>
-              <td><? echo $ciudadgrupo; ?></td>
-              <td><? echo $fonogrupo; ?></td>
+              <td><?phpecho $dirgrupo; ?></td>
+              <td><?phpecho $comunagrupo; ?></td>
+              <td><?phpecho $ciudadgrupo; ?></td>
+              <td><?phpecho $fonogrupo; ?></td>
             </tr>
           </table>
         </div>
@@ -264,7 +264,7 @@ function enviar_formulario(){
               <th class='span3'>Condición de la vivienda</th>
             </tr>
             <tr>
-              <td><? echo $viv_tipo; ?></td>
+              <td><?phpecho $viv_tipo; ?></td>
             </tr>
           </table>
         </div>

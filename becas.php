@@ -96,7 +96,7 @@ $pregunta = $con->query("SELECT * FROM alumnos WHERE rut_alum ='$rut'");
         <p>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
       <center>
-      <form name="alumnos_dae" method="post" <!--action="inserta2.php?var=<? //echo $rut; ?>"-->
+      <form name="alumnos_dae" method="post" <!--action="inserta2.php?var=<?php//echo $rut; ?>"-->
       <div class="izq">
         <legend><?php if($sexo=='M'){echo "Bienvenido:";}else{echo "Bienvenida:";}?> <?php echo utf8_encode($nombre); ?>, seleccione la alternativa a la cual desea postular</legend>
       </div>
