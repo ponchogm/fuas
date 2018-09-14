@@ -3,7 +3,7 @@
   <head>    
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
     <meta charset="utf-8">
-    <title>Beneficios 2014 - Universidad Metropolitana de Ciencias de la Educación</title>
+    <title>DAE - Universidad Metropolitana de Ciencias de la Educación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -67,7 +67,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Beneficios 2014</a>
+        <a class="brand" href="#">DAE - UMCE</a>
         <ul class="nav pull-right">
           <li><a href="#">Universidad Metropolitana de Ciencias de la Educación - Dirección de asuntos estudiantiles</a></li>
         </ul>  
@@ -78,9 +78,8 @@
 
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
-        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica 2014</h3></div>
-        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>        
+        <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
+        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div>        
         <p>
       </div>
      </div>  <!-- /container -->
@@ -102,23 +101,6 @@
       </footer>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
   </body>
 </html>

@@ -54,17 +54,17 @@ function enviar_formulario(){
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Beneficios</a>
+        <a class="brand" href="#">DAE-UMCE</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><a href="form.php"><i class="icon-plus"></i> Ingresar nuevo</a></li>
-            <li><a href="modificar.php?rut=<?phpecho $rut; ?>"><i class="icon-edit"></i> Modificar datos</a></li>
-            <li><a href="print_form.php?rut=<?phpecho $rut; ?>"><i class="icon-print"></i> Imprimir Formulario</a></li>
+            <li><a href="modificar.php?rut=<?php echo $rut; ?>"><i class="icon-edit"></i> Modificar datos</a></li>
+            <li><a href="print_form.php?rut=<?php echo $rut; ?>"><i class="icon-print"></i> Imprimir Formulario</a></li>
             <li class="divider-vertical"></li>
             <li><a href="hero.php"><i class="icon-search"></i> Buscar otro RUT</a></li>
           </ul>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?php echo $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
             <li><a href="salir.php"><i class="icon-off"></i> cerrar sesión</a></li>
           </ul>
@@ -78,9 +78,9 @@ function enviar_formulario(){
 
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
-        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
+        <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
         <div class="span8" style="text-align:center"><h3>Formulario de acreditación socioeconómica</h3></div>
-        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>
+        
       </div>
         <p>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
@@ -92,8 +92,10 @@ function enviar_formulario(){
               <select name="anio">
                 <option value="2014">2014</option>
                 <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
               </select>
-              <input type="hidden" name="rut" value="<?phpecho $rut; ?>" />
+              <input type="hidden" name="rut" value="<?php echo $rut; ?>" />
               <button type="submit" class="btn btn-primary">Consulta año</button>
 
             </form>
@@ -222,10 +224,10 @@ function enviar_formulario(){
             }
           ?>
             <tr>
-              <td><?phpecho $dirgrupo; ?></td>
-              <td><?phpecho $comunagrupo; ?></td>
-              <td><?phpecho $ciudadgrupo; ?></td>
-              <td><?phpecho $fonogrupo; ?></td>
+              <td><?php echo $dirgrupo; ?></td>
+              <td><?php echo $comunagrupo; ?></td>
+              <td><?php echo $ciudadgrupo; ?></td>
+              <td><?php echo $fonogrupo; ?></td>
             </tr>
           </table>
         </div>
@@ -275,7 +277,7 @@ function enviar_formulario(){
               <th class='span3'>Condición de la vivienda</th>
             </tr>
             <tr>
-              <td><?phpecho $viv_tipo; ?></td>
+              <td><?php echo $viv_tipo; ?></td>
             </tr>
           </table>
         </div>
@@ -306,20 +308,20 @@ function enviar_formulario(){
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {
           $nombre2 = $fila2['persona_nombres']." ".$fila2['persona_ap_pat']." ".$fila2['persona_ap_mat'];
-          $sueldo = ltrim($fila2['ingreso_sueldos'], '0');
-          $sueldo2 = number_format($sueldo, 0, '', '.');
-          $hono = ltrim($fila2['ingreso_honorario'], '0');
-          $hono2 = number_format($hono, 0, '', '.');
+          $sueldo = ltrim($fila2['ingreso_sueldos'],'0');
+          $sueldo2 = number_format($sueldo,0,'','.');
+          $hono = ltrim($fila2['ingreso_honorario'],'0');
+          $hono2 = number_format($hono,0,'','.');
           $retiro = ltrim($fila2['ingreso_retiro'], '0');
-          $retiro2 = number_format($retiro, 0, '', '.');
+          $retiro2 = number_format($retiro,0,'','.');
           $pension = ltrim($fila2['ingreso_pension'], '0');
-          $pension2 = number_format($pension, 0, '', '.');
-          $indep = ltrim($fila2['ingreso_activ_indep'], '0');
-          $indep2 = number_format($indep, 0, '', '.');
-          $otro = ltrim($fila2['ingreso_otros'], '0');
-          $otro2 = number_format($otro, 0, '', '.');
-          $totall = ltrim($fila2['ingreso_total'], '0');
-          $totall2 = number_format($totall, 0, '', '.');
+          $pension2 = number_format($pension,0,'','.');
+          $indep = ltrim($fila2['ingreso_activ_indep'],'0');
+          $indep2 = number_format($indep,0,'','.');
+          $otro = ltrim($fila2['ingreso_otros'],'0');
+          $otro2 = number_format($otro,0,'','.');
+          $totall = ltrim($fila2['ingreso_total'],'0');
+          $totall2 = number_format($totall,0,'','.');
           echo "<tr>
           <td>".$nombre2."</td>
           <td>".$fila2['persona_rut']."</td>
@@ -424,23 +426,5 @@ $resultado9=$con->query("SELECT adjuntos.* FROM adjuntos WHERE '$rut' = rut_alum
       </footer>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
-
   </body>
 </html>

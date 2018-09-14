@@ -47,6 +47,7 @@ function enviar_formulario(){
         WHERE rut_alum ='$rut' AND cod_carrera_alum = codigo_car");
         while($row = $resultado->fetch_array(MYSQLI_ASSOC))
   			{
+        $id_alum=$row['id_alum'];  
 				$cod_car=$row['cod_carrera_alum'];
 				$nombre = $row['nombres_alum'] ." ". $row['ap_pat_alum'] ." ". $row['ap_mat_alum'];
 				$fnac=$row['fecha_nac'];
@@ -64,6 +65,9 @@ function enviar_formulario(){
   			}
         $correo_umce = explode('@', $correo);
         $activa = $correo_umce[1];
+        $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
+              $valor=$resultado7->fetch_array(MYSQLI_ASSOC);
+                $t=$valor['res'];
   	?>
     <legend>Antecedentes del estudiante</legend>
     <p>
@@ -111,12 +115,13 @@ function enviar_formulario(){
         $sexo='Femenino';
       }
       ?>
-          <td>
-            <?php 
-              $mensaje = $correo_umce[1]!="umce.cl" ? "Activa tu correo institucional aquí":"";
+          
+            <?php
+              $activa_correo = "<td style='background-color:#d9edf7'>Activa tu correo institucional <a href='http://146.83.132.24/correos/'>aquí</a></td>";
+              $mensaje = $correo_umce[1]!="umce.cl" ? $activa_correo : "<td></td>";
             echo $mensaje;
           ?>
-          </td>
+          
         </tr>
     </table>
     <table class="table table-bordered table-condensed">
@@ -178,22 +183,23 @@ function enviar_formulario(){
 
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {
-              $sueldo = ltrim($fila2['ingreso_total'], '0');
-              $sueldo2 = number_format($sueldo, 0, '', '.');
+          $sueldo = number_format($fila2['ingreso_total'], 0, ',', '.');
           echo "<tr>
           <td>".$fila2['persona_nombres']." ".$fila2['persona_ap_pat']." ".$fila2['persona_ap_mat']."</td>
           <td>".$fila2['persona_rut']."</td>
-          <td>".$fila2['persona_edad']."</td>
-          <td>".$fila2['persona_ecivil']."</td>
-          <td>".$fila2['persona_parent']."</td>
-          <td>".$fila2['persona_prev_soc']."</td>
-          <td>".$fila2['persona_prev_sal']."</td>
-          <td>".$fila2['persona_niv_est']."</td>
-          <td>".$fila2['persona_act']."</td>
-          <td>$".$sueldo2."</td>";
+          <td style='text-align:right'>".$fila2['persona_edad']."</td>
+          <td style='text-align:right'>".$fila2['persona_ecivil']."</td>
+          <td style='text-align:right'>".$fila2['persona_parent']."</td>
+          <td style='text-align:right'>".$fila2['persona_prev_soc']."</td>
+          <td style='text-align:right'>".$fila2['persona_prev_sal']."</td>
+          <td style='text-align:right'>".$fila2['persona_niv_est']."</td>
+          <td style='text-align:right'>".$fila2['persona_act']."</td>
+          <td style='text-align:right'>$".$sueldo."</td>";
   }
   ?>
     </table>
+    <p>
+      <span class="label label-primary"><?php echo $t; ?> integrantes</span>
     <p><br>
     <a href="#" onclick="window.print();return false;"><i class="icon-print"></i> Imprimir Formulario</a>  </p>
     <a href="javascript:window.history.back();"><i class="icon-off"></i> Cerrar</a>

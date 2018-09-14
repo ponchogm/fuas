@@ -106,7 +106,7 @@ $pregunta = $con3->query("SELECT * FROM alumnos WHERE rut ='$rut'");
         <p>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
       <center>
-      <form name="alumnos_dae" method="post" action="insertaCorreos.php?var=<?phpecho $rut; ?>"
+      <form name="alumnos_dae" method="post" action="insertaCorreos.php?var=<?php echo $rut; ?>"
       <div class="izq span12">
         <legend>Bienvenido: <?php echo utf8_encode($nombre); ?>.</legend>
         <p><?php echo $rut; ?>

@@ -260,7 +260,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                   </div>
                   <div class="form-group col-md-3">
                     <select id="ecivil_grupo1" name="ecivil_grupo1" class="form-control" required>
-                        <option value="0">Estado Civil</option>
+                        <option value="">Estado Civil</option>
                         <option value="1">Soltero/a</option>
                         <option value="2">Casado/a</option>
                         <option value="3">Separado/a legalmente</option>
@@ -2189,13 +2189,6 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     <hr>
                 </div>
               </div>
-            
-                    <div class="row">
-                      <h6>Total número de integrantes del grupo familiar (incluído el Estudiantes)</h6>
-                      <div class="col-sm-1">
-                          <input type="text" id="total" name="total" required class="form-control" placeholder="Total">
-                      </div>
-                    </div>
                     <br>
                     <div class="row">
                       <div class="form-group col-sm-6">
@@ -2231,6 +2224,10 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             $pueblo=$row['pueb_orig_alum'];
             $postula=$row['postula_beca_alum'];
             $otra=$row['otras_becas_alum'];
+              
+              $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
+              $valor=$resultado7->fetch_array(MYSQLI_ASSOC);
+                $t=$valor['res'];
             ?>
            <div class="alert"><h6>Tu formulario ya ha sido ingresado a nuestra base de datos, si necesitas hacer alguna modificación, por favor comunícate con la asistente social de la carrera en Bienestar Estudiantil</h6></div>
           <div class="form-group col-md-3"> 
@@ -2341,21 +2338,21 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
               <h4 class="page-header">Antecedentes e ingresos del grupo familiar</h4>
             </div>
           </div>
-                <h6>Datos por cada integrante del grupo familiar incluído usted mismo</h6>
+                <h6>Datos por cada integrante del grupo familiar incluído usted mismo  <span class="label label-primary"><?php echo $t; ?> integrantes</span></h6>
                     <?php
                     $i=1;
                       $resultado4=$con->query("SELECT alumnos.*, persona_grupo.*, ingresos.*, estado_civil.*, parentesco.*, prev_social.*, prev_salud.*, estudios.*, actividad.*
                         FROM alumnos, persona_grupo, ingresos, estado_civil, parentesco, prev_social, prev_salud, estudios, actividad
-                        WHERE rut_alum ='$rut'
-                        AND id_alum = persona_id_alum
-                        AND persona_rut = ingreso_persona_grp_id
-                        AND id_alum = ingreso_alumn_id
-                        AND persona_ecivil = id_estado_civil
-                        AND persona_parent = id_parentesco
-                        AND persona_prev_soc = id_prev_soc
-                        AND persona_prev_sal = id_prev_sal
-                        AND persona_niv_est = cod_estudios
-                        AND persona_act = cod_actividad ORDER BY id_persona_grupo");
+                        WHERE alumnos.rut_alum ='$rut'
+                        AND alumnos.id_alum = persona_grupo.persona_id_alum
+                        AND alumnos.id_alum = ingresos.ingreso_alumn_id
+                        AND persona_grupo.persona_rut = ingresos.ingreso_persona_grp_id
+                        AND persona_grupo.persona_ecivil = estado_civil.id_estado_civil
+                        AND persona_grupo.persona_parent = parentesco.id_parentesco
+                        AND persona_grupo.persona_prev_soc = prev_social.id_prev_soc
+                        AND persona_grupo.persona_prev_sal = prev_salud.id_prev_sal
+                        AND persona_grupo.persona_niv_est = estudios.cod_estudios
+                        AND persona_grupo.persona_act = actividad.cod_actividad ORDER BY persona_grupo.id_persona_grupo");
 
                         while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC)){
                         $id_ingreso=$fila2['id_ingreso'];
@@ -2370,47 +2367,79 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         $persona_prev_sal=$fila2['tipo_prev_sal'];
                         $persona_niv_est=$fila2['tipo_estudios'];
                         $persona_act=$fila2['nom_actividad'];
-                        $sueldo=$fila2['ingreso_sueldos'];
-                        $honorario=$fila2['ingreso_honorario'];
-                        $retiro=$fila2['ingreso_retiro'];
-                        $pension=$fila2['ingreso_pension'];
-                        $act_indep=$fila2['ingreso_activ_indep'];
-                        $otros=$fila2['ingreso_otros'];
+                        //$sueldo=ltrim($fila2['ingreso_sueldos'],'0');
+                        $sueldo = number_format($fila2['ingreso_sueldos'], 0, ',', '.');
+                        $honorario=number_format($fila2['ingreso_honorario'], 0, ',', '.');
+                        $retiro=number_format($fila2['ingreso_retiro'], 0, ',', '.');
+                        $pension=number_format($fila2['ingreso_pension'], 0, ',', '.');
+                        $act_indep=number_format($fila2['ingreso_activ_indep'], 0, ',', '.');
+                        $otros=number_format($fila2['ingreso_otros'], 0, ',', '.');
+                        $ingreso_total=number_format($fila2['ingreso_total'], 0, ',', '.');
 
                     ?>
               <!-- <div> -->
+                <div class=form-row">
+                  Integrante: <strong><?php echo $i; ?></strong>************************************************************************************************************
                   <p>
-                <div class="controls controls-row">
-                  Integrante: <?phpecho $i; ?>
-                  <p>
-                  <input type="text" disabled class="span2" value="<?php echo $persona_nombres; ?>">
-                  <input type="text" disabled class="span2" value="<?php echo $persona_ap_pat; ?>">
-                  <input type="text" disabled class="span2" value="<?php echo $persona_ap_mat; ?>">
-                  <input type="text" disabled class="span2" value="Rut: <?php echo $persona_rut; ?>">
-                  <input type="text" disabled class="span2" value="Edad: <?php echo $persona_edad; ?>">
-                  <input type="text" disabled class="span2" value="<?php echo $persona_ecivil; ?>">
+                  <div class="form-group col-md-3">  
+                    <input type="text" disabled class="form-control" value="<?php echo $persona_nombres; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="<?php echo $persona_ap_pat; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="<?php echo $persona_ap_mat; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Rut: <?php echo $persona_rut; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Edad: <?php echo $persona_edad; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="<?php echo $persona_ecivil; ?>">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_parent); ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_prev_soc); ?>">
+                  </div>  
+                  <div class="form-group col-md-3">  
+                    <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_prev_sal); ?>">
+                  </div>  
+                  <div class="form-group col-md-3">  
+                    <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_niv_est); ?>">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_act); ?>">
+                  </div> 
+                    <h6>Ingresos Promedio mensuales de los últimos 8 meses</h6>
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Sueldo: $<?php echo $sueldo; ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Honorarios: $<?php echo $honorario; ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Aportes: $<?php echo $retiro; ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Pension: $<?php echo $pension; ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Act. Indep: $<?php echo $act_indep; ?>">
+                  </div>  
+                  <div class="form-group col-md-3">
+                    <input type="text" disabled class="form-control" value="Otros: $<?php echo $otros; ?>">
+                  </div>
+                </div>   
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" disabled class="form-control" value="Total ingresos persona del grupo familiar: $<?php echo $ingreso_total; ?>">
+                  </div>  
                 </div>
-                <div class="controls controls-row">
-                      <input type="text" disabled class="span2" value="<?php echo utf8_encode($persona_parent); ?>">
-                      <input type="text" disabled class="span2" value="<?php echo utf8_encode($persona_prev_soc); ?>">
-                      <input type="text" disabled class="span2" value="<?php echo utf8_encode($persona_prev_sal); ?>">
-                      <input type="text" disabled class="span6" value="<?php echo utf8_encode($persona_niv_est); ?>">
-                    </div>
-                    <div class="controls controls-row">
-                       <input type="text" disabled class="span12" value="<?php echo utf8_encode($persona_act); ?>">
-                    </div>
-                    <div class="controls controls-row">
-                      <h6>Ingresos Promedio mensuales de los últimos 8 meses</h6>
-                      <input type="text" disabled class="span2" value="Sueldo: <?php echo $sueldo; ?>">
-                      <input type="text" disabled class="span2" value="Honorarios: <?php echo $honorario; ?>">
-                      <input type="text" disabled class="span2" value="Aportes: <?php echo $retiro; ?>">
-                      <input type="text" disabled class="span2" value="Pension: <?php echo $pension; ?>">
-                      <input type="text" disabled class="span2" value="Act. Indep:<?php echo $act_indep; ?>">
-                      <input type="text" disabled class="span2" value="Otros: <?php echo $otros; ?>">
-                    </div>
-                    <hr>
-
-              
+                <p>
               <?php $i++; }  ?>
               <h5><a href="print_formalum.php?var7=<?php echo $rut; ?>"><i class="icon-print"></i> Imprimir el Formulario</a></h5>
             <?php endif; ?>

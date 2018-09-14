@@ -12,6 +12,12 @@ if($anio=='2014'){
 if($anio=='2015'){
   $conex=$con2;
 }
+if($anio=='2016'){
+  $conex=$con4;
+}
+if($anio=='2017'){
+  $conex=$con5;
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,10 +71,10 @@ function enviar_formulario(){
         <a class="brand" href="#">Beneficios</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><a href="hero2.php?rut=<?phpecho $rut; ?>"><i class="icon-edit"></i> Modificar año de búsqueda</a></li>
+            <li><a href="hero2.php?rut=<?php echo $rut; ?>"><i class="icon-edit"></i> Modificar año de búsqueda</a></li>
           </ul>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?php echo $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
             <li><a href="salir.php"><i class="icon-off"></i> cerrar sesión</a></li>
           </ul>
@@ -211,10 +217,10 @@ function enviar_formulario(){
             }
           ?>
             <tr>
-              <td><?phpecho $dirgrupo; ?></td>
-              <td><?phpecho $comunagrupo; ?></td>
-              <td><?phpecho $ciudadgrupo; ?></td>
-              <td><?phpecho $fonogrupo; ?></td>
+              <td><?php echo $dirgrupo; ?></td>
+              <td><?php echo $comunagrupo; ?></td>
+              <td><?php echo $ciudadgrupo; ?></td>
+              <td><?php echo $fonogrupo; ?></td>
             </tr>
           </table>
         </div>
@@ -264,7 +270,7 @@ function enviar_formulario(){
               <th class='span3'>Condición de la vivienda</th>
             </tr>
             <tr>
-              <td><?phpecho $viv_tipo; ?></td>
+              <td><?php echo $viv_tipo; ?></td>
             </tr>
           </table>
         </div>
@@ -413,23 +419,6 @@ $resultado9=$conex->query("SELECT adjuntos.* FROM adjuntos WHERE '$rut' = rut_al
       </footer>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
   </body>
 </html>

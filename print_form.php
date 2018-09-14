@@ -80,7 +80,7 @@ $rut=$_GET['rut'];
   	?>
     <legend>Antecedentes del estudiante</legend>
     <p>
-    Código de carrera: <?phpecho $cod_car; ?>
+    Código de carrera: <?php echo $cod_car; ?>
     <table  width="100%" border="1">
         <tr>
           <td><strong>Nombre</strong></td>
@@ -89,10 +89,10 @@ $rut=$_GET['rut'];
           <td><strong>Año ingreso</strong></td>
         </tr>
         <tr>
-          <td><?phpecho utf8_encode($nombre); ?></td>
-          <td><?phpecho $rut; ?></td>
-          <td><?phpecho $fnac; ?></td>
-          <td><?phpecho $ingreso; ?></td>
+          <td><?php echo utf8_encode($nombre); ?></td>
+          <td><?php echo $rut; ?></td>
+          <td><?php echo $fnac; ?></td>
+          <td><?php echo $ingreso; ?></td>
         </tr>
         <tr>
           <td><strong>Dirección</strong></td>
@@ -101,10 +101,10 @@ $rut=$_GET['rut'];
           <td><strong>Email</strong></td>
         </tr>
         <tr>
-          <td><?phpecho $direccion; ?></td>
-          <td><?phpecho $comuna; ?></td>
-          <td><?phpecho $celular ."-". $telefono; ?></td>
-          <td><?phpecho $correo; ?></td>
+          <td><?php echo $direccion; ?></td>
+          <td><?php echo $comuna; ?></td>
+          <td><?php echo $celular ."-". $telefono; ?></td>
+          <td><?php echo $correo; ?></td>
         </tr>
         <tr>
           <td><strong>Nacionalidad</strong></td>
@@ -113,9 +113,9 @@ $rut=$_GET['rut'];
           <td><strong>Género</strong></td>
         </tr>
         <tr>
-          <td><?phpecho $nacionalidad; ?></td>
-          <td><?phpecho $discap; ?></td>
-          <td><?phpecho $porig; ?></td>
+          <td><?php echo $nacionalidad; ?></td>
+          <td><?php echo $discap; ?></td>
+          <td><?php echo $porig; ?></td>
           <?php
 		  if ($sexos=='M'){
 			  $sexo='Masculino';
@@ -124,7 +124,7 @@ $rut=$_GET['rut'];
 			  $sexo='Femenino';
 		  }
 		  ?>
-          <td><?phpecho $sexo; ?></td>
+          <td><?php echo $sexo; ?></td>
         </tr>
     </table>
     <table width="100%" border="1">
@@ -132,7 +132,7 @@ $rut=$_GET['rut'];
           <td><strong>Carrera</strong></td>
       </tr>
         <tr>
-          <td><?phpecho $carrera; ?></td>
+          <td><?php echo $carrera; ?></td>
         </tr>
     </table>
     <legend>Beneficios del estudiante</legend>
@@ -218,11 +218,11 @@ $rut=$_GET['rut'];
             }
           ?>
       <tr>
-        <td><?phpecho $dirgrupo; ?></td>
-        <td><?phpecho $comunagrupo; ?></td>
-        <td><?phpecho $ciudadgrupo; ?></td>
-        <td><?phpecho $fonogrupo; ?></td>
-        <td><?phpecho $viv_tipo; ?></td>
+        <td><?php echo $dirgrupo; ?></td>
+        <td><?php echo $comunagrupo; ?></td>
+        <td><?php echo $ciudadgrupo; ?></td>
+        <td><?php echo $fonogrupo; ?></td>
+        <td><?php echo $viv_tipo; ?></td>
       </tr>
     </table>
     <table width="100%" border="1">
@@ -327,22 +327,7 @@ $rut=$_GET['rut'];
 
   </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  <script src="../assets/js/jquery.js"></script>
-  <script src="../assets/js/bootstrap-transition.js"></script>
-  <script src="../assets/js/bootstrap-alert.js"></script>
-  <script src="../assets/js/bootstrap-modal.js"></script>
-  <script src="../assets/js/bootstrap-dropdown.js"></script>
-  <script src="../assets/js/bootstrap-scrollspy.js"></script>
-  <script src="../assets/js/bootstrap-tab.js"></script>
-  <script src="../assets/js/bootstrap-tooltip.js"></script>
-  <script src="../assets/js/bootstrap-popover.js"></script>
-  <script src="../assets/js/bootstrap-button.js"></script>
-  <script src="../assets/js/bootstrap-collapse.js"></script>
-  <script src="../assets/js/bootstrap-carousel.js"></script>
-  <script src="../assets/js/bootstrap-typeahead.js"></script>
+
 
 </body>
 </html>

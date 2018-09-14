@@ -328,7 +328,7 @@ xmlhttp.send();
                    <h3>Actualizar dirección del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="dir" action="actualizadir.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="dir" action="actualizadir.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su dirección actual.</p>
                   <input type="text" id="dir" name="dir" class="span4">                
                   
@@ -347,7 +347,7 @@ xmlhttp.send();
                    <h3>Actualizar comuna del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="comuna" action="actualizacomuna.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="comuna" action="actualizacomuna.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su comuna actual.</p>
                   <input type="text" id="comuna" name="comuna" class="span4">                
                   
@@ -366,7 +366,7 @@ xmlhttp.send();
                    <h3>Actualizar Teléfono fijo del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="fono" action="actualizafijo.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="fono" action="actualizafijo.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su teléfono fijo actual.</p>
                   <input type="text" id="fijo" name="fijo" class="span3">                
                   
@@ -385,7 +385,7 @@ xmlhttp.send();
                    <h3>Actualizar Celular del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="celu" action="actualizacel.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="celu" action="actualizacel.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su teléfono celular actual.</p>
                   <input type="text" id="cel" name="cel" class="span3">                
                   
@@ -404,7 +404,7 @@ xmlhttp.send();
                    <h3>Actualizar Email del alumno</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="mail" action="actualizamail.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="mail" action="actualizamail.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su Email actual.</p>
                   <input type="text" id="email" name="email" class="span4">                
                   
@@ -478,10 +478,10 @@ xmlhttp.send();
             }
           ?>
             <tr>
-              <td><a data-toggle='modal' href='#divdirgrp'><?phpecho $dirgrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divcomgrp'><?phpecho $comunagrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divcitygrp'><?phpecho $ciudadgrupo; ?></a></td>
-              <td><a data-toggle='modal' href='#divfijogrp'><?phpecho $fonogrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divdirgrp'><?php echo $dirgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divcomgrp'><?php echo $comunagrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divcitygrp'><?php echo $ciudadgrupo; ?></a></td>
+              <td><a data-toggle='modal' href='#divfijogrp'><?php echo $fonogrupo; ?></a></td>
             </tr>
           </table>
         </div>  
@@ -491,7 +491,7 @@ xmlhttp.send();
               <th class='span3'>Condición de la vivienda</th>           
             </tr>
             <tr>
-              <td><a data-toggle='modal' href='#divvivgrp'><?phpecho $viv_tipo; ?></a></td>   
+              <td><a data-toggle='modal' href='#divvivgrp'><?php echo $viv_tipo; ?></a></td>   
             </tr>
           </table>
 
@@ -502,7 +502,7 @@ xmlhttp.send();
                    <h3>Actualizar dirección del grupo familiar</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="dirgrp" action="actualizadirgrp.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="dirgrp" action="actualizadirgrp.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su dirección actual.</p>
                   <input type="text" id="dirgrp" name="dirgrp" class="span4">                
                   
@@ -521,7 +521,7 @@ xmlhttp.send();
                    <h3>Actualizar comuna del grupo familiar</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="comgrp" action="actualizadir.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="comgrp" action="actualizadir.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su comuna actual.</p>
                   <input type="text" id="comgrp" name="comgrp" class="span4">                
                   
@@ -540,7 +540,7 @@ xmlhttp.send();
                    <h3>Actualizar Ciudad del grupo familiar</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="citygrp" action="actualizadir.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="citygrp" action="actualizadir.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su ciudad actual.</p>
                   <input type="text" id="citygrp" name="citygrp" class="span4">                
                   
@@ -559,7 +559,7 @@ xmlhttp.send();
                    <h3>Actualizar Teléfono fijo del grupo familiar</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="fijogrp" action="actualizadir.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="fijogrp" action="actualizadir.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su teléfono fijo actual.</p>
                   <input type="text" id="fijogrp" name="fijogrp" class="span4">                
                   
@@ -578,7 +578,7 @@ xmlhttp.send();
                    <h3>Actualizar condición de la vivienda</h3>
                     </div>
                   <div class="modal-body">
-                  <form name="vivgrp" action="actualizadir.php?var2=<?phpecho $rut; ?>" method="post">
+                  <form name="vivgrp" action="actualizadir.php?var2=<?php echo $rut; ?>" method="post">
                   <p>Escriba su dirección actual.</p>
                   <input type="text" id="vivgrp" name="vivgrp" class="span4">                
                   

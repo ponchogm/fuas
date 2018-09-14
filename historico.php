@@ -97,7 +97,7 @@ function validaRut(rut){
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Beneficios</a>
+        <a class="brand" href="#">DAE - UMCE</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li class="divider-vertical"></li>
@@ -110,11 +110,13 @@ function validaRut(rut){
             <select name="anio">
               <option value="2014">2014</option>
               <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
             </select>
           </form>
           <span id="mensaje"></span>
           <ul class="nav pull-right">
-            <li><a href="#"><i class="icon-user"></i> usuario: <?phpecho $_SESSION["usuarioactual"]; ?></a></li>
+            <li><a href="#"><i class="icon-user"></i> usuario: <?php echo $_SESSION["usuarioactual"]; ?></a></li>
             <li class="divider-vertical"></li>
             <li><a href="salir.php"><i class="icon-off"></i> cerrar sesión</a></li>
           </ul>
@@ -127,9 +129,8 @@ function validaRut(rut){
     <div class="container">
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
-        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica<P>UMCE</h3></div>
-        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>
+        <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
+        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div> 
       </div>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
 </div> <!-- /container -->
@@ -144,24 +145,6 @@ function validaRut(rut){
         <p>&copy; Informática - UMCE 2013</p>
       </footer>
 
-
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
   </body>
 </html>
