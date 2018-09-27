@@ -231,46 +231,7 @@ function enviar_formulario(){
             </tr>
           </table>
         </div>
-        <div class='controls controls-row'>
-              <p>
-              <legend>Padres que no pertenecen al grupo familiar</legend>
-
-          <table class='table table-hover table table-bordered'>
-  <tr>
-    <th>Nombre Padres</th>
-    <th>Rut</th>
-    <th>Parentesco</th>
-    <th>Dirección</th>
-    <th>Comuna</th>
-    <th>Ciudad</th>
-    <th>Región</th>
-    <th>Estado civil</th>
-    <th>Actividad</th>
-  </tr>
-  <?php
-              $resultado5=$con->query("SELECT alumnos.*,un_grupo_familiar.*
-              FROM alumnos, un_grupo_familiar
-              WHERE rut_alum ='$rut' AND id_alum = un_grupo_alum_id");
-
-              while($fila3 = $resultado5->fetch_array(MYSQLI_ASSOC))
-            {
-          $un_grupo_alum_id=$fila3['un_grupo_alum_id'];
-          $un_grupo_id=$fila3['un_grupo_id'];
-          echo "<tr>
-          <td>".$fila3['un_grupo_nombres']." ".$fila3['un_grupo_ap_pat']." ".$fila3['un_grupo_ap_mat']."</td>
-          <td>".$fila3['un_grupo_rut']."</td>
-          <td>".$fila3['un_grupo_parent']."</td>
-          <td>".$fila3['un_grupo_direccion']."</td>
-          <td>".$fila3['un_grupo_comuna']."</td>
-          <td>".$fila3['un_grupo_ciudad']."</td>
-          <td>".$fila3['un_grupo_region']."</td>
-          <td>".$fila3['un_grupo_ecivil']."</td>
-          <td>".$fila3['un_grupo_actividad']."</td>";
-  }
-  ?>
-  </tr>
-</table>
-</div>
+       
         <div class='controls controls-row'>
           <table class='table table-hover table table-bordered'>
             <tr>
@@ -308,20 +269,14 @@ function enviar_formulario(){
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {
           $nombre2 = $fila2['persona_nombres']." ".$fila2['persona_ap_pat']." ".$fila2['persona_ap_mat'];
-          $sueldo = ltrim($fila2['ingreso_sueldos'],'0');
-          $sueldo2 = number_format($sueldo,0,'','.');
-          $hono = ltrim($fila2['ingreso_honorario'],'0');
-          $hono2 = number_format($hono,0,'','.');
-          $retiro = ltrim($fila2['ingreso_retiro'], '0');
-          $retiro2 = number_format($retiro,0,'','.');
-          $pension = ltrim($fila2['ingreso_pension'], '0');
-          $pension2 = number_format($pension,0,'','.');
-          $indep = ltrim($fila2['ingreso_activ_indep'],'0');
-          $indep2 = number_format($indep,0,'','.');
-          $otro = ltrim($fila2['ingreso_otros'],'0');
-          $otro2 = number_format($otro,0,'','.');
-          $totall = ltrim($fila2['ingreso_total'],'0');
-          $totall2 = number_format($totall,0,'','.');
+          $sueldo = number_format($fila2['ingreso_sueldos'], 0, ',', '.');
+          $hono = number_format($fila2['ingreso_honorario'], 0, ',', '.');
+          $retiro = number_format($fila2['ingreso_retiro'], 0, ',', '.');
+          $pension = number_format($fila2['ingreso_pension'], 0, ',', '.');
+          $indep = number_format($fila2['ingreso_activ_indep'], 0, ',', '.');
+          $otro = number_format($fila2['ingreso_otros'], 0, ',', '.');
+          $total = number_format($fila2['ingreso_total'], 0, ',', '.');
+          
           echo "<tr>
           <td>".$nombre2."</td>
           <td>".$fila2['persona_rut']."</td>
@@ -332,8 +287,8 @@ function enviar_formulario(){
           <td>".$fila2['persona_prev_sal']."</td>
           <td>".$fila2['persona_niv_est']."</td>
           <td>".$fila2['persona_act']."</td>
-          <td>$".$totall2."</td>
-          <td><a class='detalle1'>Detalle<css1>Sueldo: $".$sueldo2." | Honorarios: $".$hono2." | Retiro: $".$retiro2." | Pensión: $".$pension2." | Ing. Indep: $".$indep2." | Otros ing.: $".$otro2."</css1></a>";
+          <td>$".$total."</td>
+          <td><a class='detalle1'>Detalle<css1>Sueldo: $".$sueldo." | Honorarios: $".$hono." | Retiro: $".$retiro." | Pensión: $".$pension." | Ing. Indep: $".$indep." | Otros ing.: $".$otro."</css1></a>";
 
   }
   ?>
@@ -351,19 +306,16 @@ function enviar_formulario(){
               WHERE '$id_alum' = ingreso_alumn_id");
         while($fila6 = $resultado6->fetch_array(MYSQLI_ASSOC))
             {
-              $ing_tot = ltrim($fila6['SUM(ingreso_total)'], '0');
-              $ing_tot2 = number_format($ing_tot, 0, '', '.');
-              echo "<td>$". $ing_tot2 ."</td>";
+              $it=$fila6['SUM(ingreso_total)'];
+              $ing_tot = number_format($fila6['SUM(ingreso_total)'], 0, ',', '.');
+              echo "<td>$". $ing_tot ."</td>";
             }
             $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
               $valor=$resultado7->fetch_array(MYSQLI_ASSOC);
                 $t=$valor['res'];
-                $ipc = $ing_tot / $t;
-                $ipc2 = ltrim($ipc, '0');
-                $ipc3 = number_format($ipc2, 0, '', '.');
-                echo "<td>$". $ipc3 ."</td>";
+                $ipc = $it / $t;
+                echo "<td>$". number_format($ipc, 0, ',', '.') ."</td>";
                 echo "<td>". $t ."</td>";
-
     ?>
   </tr>
 </table>
@@ -422,7 +374,10 @@ $resultado9=$con->query("SELECT adjuntos.* FROM adjuntos WHERE '$rut' = rut_alum
       <hr>
 
       <footer>
-        <p>&copy; Informática - UMCE 2013-2014</p>
+        <br>
+        <br>
+        <br>
+        <p>&copy; Informática - UMCE 2018</p>
       </footer>
 
     </div> <!-- /container -->

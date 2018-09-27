@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>    
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+  <head>
     <meta charset="utf-8">
     <title>DAE - Universidad Metropolitana de Ciencias de la Educación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,19 +42,6 @@
 
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <!-- Javascript para agregar campos en forma dinámica Luis García 2013 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
@@ -81,23 +67,22 @@
         <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
         <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div>        
         <p>
-      </div>
-     </div>  <!-- /container -->
-    <div class="container">  
+      </div> 
       <form class="form-signin" method="post" action="control.php">
         <h2 class="form-signin-heading">Ingrese sus datos</h2>
-        <input type="text" id="usuario" name="usuario" class="input-block-level" placeholder="Nombre de usuario">
-        <input type="password" id="password" name="password" class="input-block-level" placeholder="Password">
-        
-        </label>
-        <button class="btn btn-small btn-primary" type="submit">Entrar al sistema</button>
+          <input type="text" id="usuario" name="usuario" class="input-block-level" placeholder="Nombre de usuario">
+          <input type="password" id="password" name="password" class="input-block-level" placeholder="Password">
+          <button class="btn btn-small btn-primary" type="submit">Entrar al sistema</button>
       </form>
-    </div> <!-- /container -->
-   
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
       <hr>
-
       <footer>
-        <p>&copy; Informática - UMCE 2013</p>
+        <p>&copy; Informática - UMCE 2018</p>
       </footer>
 
     </div> <!-- /container -->

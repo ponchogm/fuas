@@ -4,10 +4,6 @@ include ('seguridad.php');
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <script type="text/javascript" src="bootstrap/js/validarut.js"></script>
-    <script type="text/javascript" src="bootstrap/js/prototype-1.6.0.3.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
     <meta charset="utf-8">
     <title>Beneficios - Universidad Metropolitana de Ciencias de la Educación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,19 +31,6 @@ include ('seguridad.php');
       span{color:#f00;}
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <!-- Javascript para agregar campos en forma dinámica Luis García 2013 -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
     <script>
 function enviar_formulario(){
    document.form1.submit()
@@ -124,19 +107,18 @@ function validaRut(rut){
     <div class="container">
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
-        <div class="span2"><img src="bootstrap/img/Logo_umce.jpg" class="img-rounded"></div>
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica<P>UMCE</h3></div>
-        <div class="span2"><img src="bootstrap/img/Logo_dae.jpg" class="img-rounded"></div>
+        <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
+        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div>
       </div>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
 </div> <!-- /container -->
       <hr>
       <div class="container pagination-centered">
 
-      <h6>¿Quieres saber cuantos alumnos por carrera ya han llenado el formulario ?</h6>
+      <!-- <h6>¿Quieres saber cuantos alumnos por carrera ya han llenado el formulario ?</h6> -->
        <p>
        <center>
-        <table>
+        <!-- <table>
           <tr>
             <td>
               <form name="busca" id="buscacarrera" method="post" action="hero.php?page=buscacarrera" class="well form-inline">
@@ -154,21 +136,24 @@ function validaRut(rut){
               }
                 else
               echo "<h6>Resultado <i class='icon-arrow-right'></i></h6>";
-
+        
               ?>
                 </td>
               </tr>
             </tr>
-          </table>
+          </table> -->
           </center>
           <p>
           <p>
         <img src="bootstrap/img/estudiantes.jpg" class="img-polaroid" style="text-align:center">
-
+        <footer>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        <p>&copy; Informática - UMCE 2018</p>
+        </footer>
       </div>
-      <footer>
-        <p>&copy; Informática - UMCE 2013</p>
-      </footer>
-
   </body>
 </html>
