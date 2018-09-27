@@ -591,9 +591,9 @@ function enviar_formulario(){
     <th>Eliminar entrada</th>
   </tr>
   <?php
-              $resultado4=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              $resultado4=$con->query("SELECT alumnos.id_alum,persona_grupo.*,ingresos.*
               FROM alumnos, persona_grupo, ingresos
-              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id AND id_alum = ingreso_alumn_id");
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id AND id_alum = ingreso_alumn_id AND id_persona_grupo = id_ingreso");
 
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {
@@ -784,9 +784,7 @@ $resultado9=$con->query("SELECT adjuntos.* FROM adjuntos WHERE '$rut' = rut_alum
                   <select id="persona_rut" name="persona_rut" class="span4">
                           <option value="0">Nombre</option>
                   <?php
-              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
-              FROM alumnos, persona_grupo, ingresos
-              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              $resultado6=$con->query("SELECT alumnos.id_alum,persona_grupo.*,ingresos.* FROM alumnos, persona_grupo, ingresos WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND id_persona_grupo = id_ingreso");
               $i=1;
               while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
               {
@@ -1134,9 +1132,9 @@ $resultado9=$con->query("SELECT adjuntos.* FROM adjuntos WHERE '$rut' = rut_alum
                   <select id="persona_rut" name="persona_rut" class="span4">
                           <option value="0">Nombre</option>
                   <?php
-              $resultado6=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              $resultado6=$con->query("SELECT alumnos.id_alum,persona_grupo.*,ingresos.*
               FROM alumnos, persona_grupo, ingresos
-              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id AND id_alum = ingreso_alumn_id AND id_persona_grupo = id_ingreso");
               $i=1;
               while($fila4 = $resultado6->fetch_array(MYSQLI_ASSOC))
               {

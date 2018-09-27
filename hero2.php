@@ -262,9 +262,7 @@ function enviar_formulario(){
     <th>Detalle</th>
   </tr>
   <?php
-              $resultado4=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
-              FROM alumnos, persona_grupo, ingresos
-              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id AND id_alum = ingreso_alumn_id");
+              $resultado4=$con->query("SELECT alumnos.id_alum,persona_grupo.*,ingresos.* FROM alumnos, persona_grupo, ingresos WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND id_persona_grupo = id_ingreso");
 
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {

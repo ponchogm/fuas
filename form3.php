@@ -2345,8 +2345,9 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         FROM alumnos, persona_grupo, ingresos, estado_civil, parentesco, prev_social, prev_salud, estudios, actividad
                         WHERE alumnos.rut_alum ='$rut'
                         AND alumnos.id_alum = persona_grupo.persona_id_alum
-                        AND alumnos.id_alum = ingresos.ingreso_alumn_id
-                        AND persona_grupo.persona_rut = ingresos.ingreso_persona_grp_id
+                        /*AND alumnos.id_alum = ingresos.ingreso_alumn_id*/
+                        /*AND persona_grupo.persona_rut = ingresos.ingreso_persona_grp_id*/
+                        AND persona_grupo.id_persona_grupo = ingresos.id_ingreso
                         AND persona_grupo.persona_ecivil = estado_civil.id_estado_civil
                         AND persona_grupo.persona_parent = parentesco.id_parentesco
                         AND persona_grupo.persona_prev_soc = prev_social.id_prev_soc
