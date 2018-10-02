@@ -42,7 +42,7 @@
                window.location.href=\"sesion2.php\"</script>";
           }
      }else{
-          echo"<script>alert('El usuario no existe.');window.location.href=\"index.php\"</script>";
+          echo"<script>alert('Usted no cumple con los requisitos para postular.');window.location.href=\"index.php\"</script>";
      }
      mysql_close($link);
 ?>

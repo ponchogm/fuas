@@ -62,7 +62,18 @@ function enviar_formulario(){
 				$porig=$row['pueb_orig_alum'];
 				$sexos=$row['sexo_alum'];
 				$carrera=$row['nombre_car'];
+        $op_ren_pos=$row['renueva_postula'];
   			}
+         if($op_ren_pos=="1"){
+              $opcion_ren_pos = "Renovante";
+            }
+            if($op_ren_pos=="2"){
+              $opcion_ren_pos = "Postulante";
+            }
+            if($op_ren_pos=="3"){
+              $opcion_ren_pos = "Renovante y Postulante";
+            }
+
         $correo_umce = explode('@', $correo);
         $activa = $correo_umce[1];
         $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
@@ -71,7 +82,7 @@ function enviar_formulario(){
   	?>
     <legend>Antecedentes del estudiante</legend>
     <p>
-    Código de carrera: <?php echo $cod_car; ?>
+    Código de carrera: <?php echo $cod_car; ?> <?php echo "(Estudiante ".$opcion_ren_pos.")"; ?>
     <table class="table table-bordered table-condensed">
         <tr>
           <td><strong>Nombre</strong></td>
@@ -177,9 +188,9 @@ function enviar_formulario(){
         <td><strong>Ingresos</strong></td>
       </tr>
       <?php
-              $resultado4=$con->query("SELECT alumnos.*,persona_grupo.*,ingresos.*
+              $resultado4=$con->query("SELECT alumnos.id_alum,persona_grupo.*,ingresos.*
               FROM alumnos, persona_grupo, ingresos
-              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id");
+              WHERE rut_alum ='$rut' AND id_alum = persona_id_alum AND persona_rut = ingreso_persona_grp_id AND id_alum = ingreso_alumn_id AND id_persona_grupo = id_ingreso");
 
               while($fila2 = $resultado4->fetch_array(MYSQLI_ASSOC))
             {

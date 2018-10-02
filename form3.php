@@ -23,7 +23,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>Beneficios 2018 - Universidad Metropolitana de Ciencias de la Educación</title>
+    <title>Beneficios - Universidad Metropolitana de Ciencias de la Educación</title>
     <link href="../img/templates/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="js/jquery/1.12.4/jquery.min.js"></script>
@@ -104,6 +104,14 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
               contenedor.style.display = "block";
               return true;
           }
+          function validacheckbox(){
+
+            if(!document.getElementById('chbox1').checked && !document.getElementById('chbox2').checked){
+
+            alert('¡Recuerde que debe seleccionar al menos una opción!');
+            }
+
+          }
     </script>
 
     <style type="text/css">
@@ -139,6 +147,11 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
   <?php if($dir == ''): ?>
       <form name="alumnos_dae" method="post" action="inserta2.php?var=<?php echo $rut; ?>">
         <div class="form-row">
+            Marque la Opción que corresponda en su caso:
+            <p>
+            <label class="checkbox-inline"><input type="checkbox" id="chbox1" checked name="ren" value="1">Renueva 2019</label>
+            <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2">Postula 2018</label>
+            </p>
           <legend>Antecedentes del Estudiante</legend>
           <h6>Llene cuidadosamente este formulario y revise el contenido antes de enviar</h6>
             <?php
@@ -175,7 +188,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
               <input class="form-control" disabled type="text" value="Año ingreso: <?php echo $ingreso; ?>">
             </div>
              <div class="form-group col-md-4">
-              <input type="text" required id="dir_alum" name="dir_alum" class="form-control" placeholder="Dirección académica">
+              <input type="text" required id="dir_alum" name="dir_alum" class="form-control" placeholder="Dirección de residencia">
             </div>
              <div class="form-group col-md-2">
               <input type="text" required id="comuna" name="comuna" class="form-control" placeholder="Comuna">
@@ -2192,7 +2205,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     <br>
                     <div class="row">
                       <div class="form-group col-sm-6">
-                          <button type="submit" class="btn btn-primary">Enviar Formulario</button>
+                          <button type="submit" class="btn btn-primary" onclick="validacheckbox();">Enviar Formulario</button>
                           <button type="reset" class="btn">Limpiar Datos</button>
                       </div>
                     </div>
@@ -2201,7 +2214,6 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
   <?php endif; ?>
   <?php if($dir != ''): ?>
         <div class="form-row">
-          <legend>Antecedentes del estudiante</legend>
             <?php
             $consulta = $con->query("SELECT alumnos.*,carreras.* FROM alumnos, carreras WHERE rut_alum ='$rut' AND cod_carrera_alum = codigo_car");
             $row = $consulta->fetch_array(MYSQLI_ASSOC);
@@ -2224,11 +2236,23 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             $pueblo=$row['pueb_orig_alum'];
             $postula=$row['postula_beca_alum'];
             $otra=$row['otras_becas_alum'];
+            $op_ren_pos=$row['renueva_postula'];
+            
+            if($op_ren_pos=="1"){
+              $opcion_ren_pos = "Renovante";
+            }
+            if($op_ren_pos=="2"){
+              $opcion_ren_pos = "Postulante";
+            }
+            if($op_ren_pos=="3"){
+              $opcion_ren_pos = "Renovante y Postulante";
+            }
               
               $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
               $valor=$resultado7->fetch_array(MYSQLI_ASSOC);
                 $t=$valor['res'];
             ?>
+          <legend>Antecedentes del estudiante</legend>
            <div class="alert"><h6>Tu formulario ya ha sido ingresado a nuestra base de datos, si necesitas hacer alguna modificación, por favor comunícate con la asistente social de la carrera en Bienestar Estudiantil</h6></div>
           <div class="form-group col-md-3"> 
           <input type="text" disabled class="form-control" value="<?php echo utf8_encode($nombre); ?>">

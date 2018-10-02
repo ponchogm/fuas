@@ -19,6 +19,9 @@ $comuna_hogar=$_POST['comuna_grupo'];
 $ciudad_hogar=$_POST['ciudad_grupo'];
 $telefono_hogar=$_POST['telefono_grupo'];
 $vivienda_hogar=$_POST['vivienda_grupo'];
+$ren=$_POST['ren'];
+$pos=$_POST['pos'];
+
 //Recibe datos para tabla un_grupo_fam Padre
 $padre=$_POST['padre'];
 $rut_padre_ungrupo=$_POST['rut_padre_ungrupo'];
@@ -346,6 +349,16 @@ $ingreso_total15=$ingreso_sueldos15 + $ingreso_hono15 + $ingreso_pen15 + $ingres
 
 $total=$_POST['total'];
 
+if($ren != ""){
+	$ren_pos = "1";
+}
+if($pos != ""){
+	$ren_pos = "2";
+}
+if($ren != "" && $pos != ""){
+	$ren_pos = "3";
+}
+
 $resultado=$con->query("SELECT id_alum, rut_alum FROM alumnos WHERE rut_alum='$rut_alum'");
 	while($row=$resultado->fetch_array(MYSQLI_ASSOC))
 	{
@@ -373,7 +386,7 @@ if (!mysqli_query($con,$sql))
 
 $sql="UPDATE alumnos SET direccion_alum ='$dir_alum', comuna_alum ='$comuna', telefono_alum ='$telefono_alum',
 celular_alum ='$cel_alum', correo_alum ='$correo_alum', nac_alum ='$nac_alum', pueb_orig_alum ='$porigin_alum',
-discap_alum ='$discapacidad_alum', postula_beca_alum ='$beca_int', otras_becas_alum = '$beca_otras'
+renueva_postula = '$ren_pos', discap_alum ='$discapacidad_alum', postula_beca_alum ='$beca_int', otras_becas_alum = '$beca_otras'
 WHERE rut_alum = '$rut_alum' AND id_alum = '$id_alum'";
 
 if (!mysqli_query($con,$sql))
