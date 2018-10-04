@@ -108,7 +108,8 @@ function validaRut(rut){
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
         <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div>
+        <div class="span8" style="text-align:center"><h3>Sistema de Acreditación Socioeconómica</h3></div>
+        <div class="span8" style="text-align:center"><h3>2018-2019</h3><p><h7>(Conforme a la Ley N° 19.287 de 1994 y al Reglamento aprobado por el Decreto Supremo N°938 del Ministerio de Educación del 13 de Diciembre de 1994)</h7></div>
       </div>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
 </div> <!-- /container -->
@@ -145,7 +146,7 @@ function validaRut(rut){
           </center>
           <p>
           <p>
-        <img src="bootstrap/img/estudiantes.jpg" class="img-polaroid" style="text-align:center">
+        <img src="bootstrap/img/UMCE-820x385.jpg" class="img-polaroid" style="text-align:center">
         <footer>
           <br>
           <br>

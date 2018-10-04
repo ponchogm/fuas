@@ -188,7 +188,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
               <input class="form-control" disabled type="text" value="Año ingreso: <?php echo $ingreso; ?>">
             </div>
              <div class="form-group col-md-4">
-              <input type="text" required id="dir_alum" name="dir_alum" class="form-control" placeholder="Dirección de residencia">
+              <input type="text" required id="dir_alum" name="dir_alum" class="form-control" placeholder="Dirección particular durante período académico">
             </div>
              <div class="form-group col-md-2">
               <input type="text" required id="comuna" name="comuna" class="form-control" placeholder="Comuna">
@@ -250,8 +250,8 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
         <!-- <div class="form-row"> -->
        
               <p>
-              <h4 class="page-header">Antecedentes e ingresos del grupo familiar <h6>Ingrese estos datos por cada integrante del grupo familiar incluído el estudiante (Para agregar integrantes de su grupo familiar haga click en el link "Agregar Integrante")</h6></h4>
-    <p><h6>(Los rut deben ser ingresados sin punto, pero con gui&oacute;n ej: 12345678-9)</h6>
+              <h4 class="page-header">Integrantes e ingresos del grupo familiar <h6>Ingrese estos datos por cada integrante del grupo familiar incluído el estudiante (Para agregar integrantes de su grupo familiar haga click en el link "Agregar Integrante")</h6></h4>
+    <p><h6>(Los rut deben ser ingresados con gui&oacute;n y sin puntos ej: 12345678-9)</h6>
               <div id="addinput">
                   
                 <span class="label label-primary">1</span>
@@ -347,7 +347,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     </div>
                   </div>  
                   <div class="form-row">
-                    <h6>Indique el promedio mensual de los meses de Junio, Julio y Agosto 2016. Escriba los valores sin el signo $ y sin puntos Ej: 120000</h6>
+                    <h6>Indique el promedio mensual entre los meses de Marzo y Agosto 2018. Escriba los valores sin el signo $ y sin puntos Ej: 120000</h6>
                     <div class="form-group col-md-4">
                       <input type="text" id="sueldos_grupo1" name="sueldos_grupo1" class="form-control" placeholder="Sueldos y Pensiones">
                     </div>

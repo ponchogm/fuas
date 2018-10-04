@@ -79,7 +79,8 @@ function enviar_formulario(){
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
         <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
-        <div class="span8" style="text-align:center"><h3>Formulario de acreditación socioeconómica</h3></div>
+        <div class="span8" style="text-align:center"><h3>Sistema de Acreditación Socioeconómica</h3></div>
+        <div class="span8" style="text-align:center"><h3>2018-2019</h3><p><h7>(Conforme a la Ley N° 19.287 de 1994 y al Reglamento aprobado por el Decreto Supremo N°938 del Ministerio de Educación del 13 de Diciembre de 1994)</h7></div>
         
       </div>
         <p>
@@ -174,7 +175,7 @@ function enviar_formulario(){
       </table>
       </div>
 
-            <div class='controls controls-row'>
+            <!--<div class='controls controls-row'>
               <legend>Beneficios del estudiante</legend>
               <table class='table table-hover table table-bordered'>
                 <tr>
@@ -188,18 +189,18 @@ function enviar_formulario(){
               $resultado2=$con->query("SELECT alumnos.*,beneficios.*,becasycreditos.*
               FROM alumnos, beneficios, becasycreditos
               WHERE rut_alum ='$rut' AND id_alum = id_alum_bene AND id_beca_bene = id_becas");
-              */
+              
               $resultado2=$con->query("SELECT alumnos.* FROM alumnos WHERE rut_alum ='$rut'");
               while($fila = $resultado2->fetch_array(MYSQLI_ASSOC))
             {
             $postula=$fila['postula_beca_alum'];
             //echo "<tr><td>".utf8_encode($fila['becas_nombre'])."</td></tr>";
-            }
+            }*/
           ?>
-                <td><?php echo $postula; ?></td>
+                <td><?php/* echo $postula; */?></td>
               </tr>
              </table>
-          </div>
+          </div>-->
         <div class='controls controls-row'>
           <legend>Antecedentes del grupo familiar</legend>
           <table class='table table-hover table table-bordered'>

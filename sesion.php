@@ -65,7 +65,7 @@
       <!-- Cabecera del formulario -->
       <div class="row-fluid">
         <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
-        <div class="span8" style="text-align:center"><h3>Sistema de acreditación socioeconómica</h3></div>        
+        <div class="span8" style="text-align:center"><h3>Sistema de Acreditación Socioeconómica</h3></div>        
         <p>
       </div> 
       <form class="form-signin" method="post" action="control.php">

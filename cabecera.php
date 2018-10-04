@@ -28,7 +28,7 @@
         </div>
         <div class="col-sm-6">
           <div style="text-align:center">
-            <h3>Sistema de acreditación Socioeconómica</h3>
+            <h3>Sistema de Acreditación Socioeconómica</h3>
           </div>
         </div>
         <div class="col-sm-3">
