@@ -81,7 +81,7 @@ function enviar_formulario(){
         <img class="span2" src="img/templates/logo_umce_2018_290.jpg">
         <div class="span8" style="text-align:center"><h3>Sistema de Acreditación Socioeconómica</h3></div>
         <div class="span8" style="text-align:center"><h3>2018-2019</h3><p><h7>(Conforme a la Ley N° 19.287 de 1994 y al Reglamento aprobado por el Decreto Supremo N°938 del Ministerio de Educación del 13 de Diciembre de 1994)</h7></div>
-        
+
       </div>
         <p>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
@@ -124,12 +124,25 @@ function enviar_formulario(){
 	  $pueblo=$row['pueb_orig_alum'];
 	  $carrera=$row['nombre_car'];
 	  $cod_car=$row['cod_carrera_alum'];
+    $ren_pos=$row['renueva_postula'];
 
 	  echo $row['rut_alum'];
     echo "<p>";
     echo $row['cod_carrera_alum'];
+
    }
     ?>
+    Marque la Opción que corresponda en su caso:
+    <p>
+    <?php if($ren_pos != '3'): ?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked";}?> >Renueva 2019</label>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked";}?> >Postula 2018</label>
+    <?php endif; ?>
+    <?php if($ren_pos == '3'): ?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked >Renueva 2019</label>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked >Postula 2018</label>
+    <?php endif; ?>
+    </p>
       <table class="table table-hover table table-bordered" width="100%">
         <tr>
           <th>Nombre</th>
@@ -189,7 +202,7 @@ function enviar_formulario(){
               $resultado2=$con->query("SELECT alumnos.*,beneficios.*,becasycreditos.*
               FROM alumnos, beneficios, becasycreditos
               WHERE rut_alum ='$rut' AND id_alum = id_alum_bene AND id_beca_bene = id_becas");
-              
+
               $resultado2=$con->query("SELECT alumnos.* FROM alumnos WHERE rut_alum ='$rut'");
               while($fila = $resultado2->fetch_array(MYSQLI_ASSOC))
             {
@@ -232,7 +245,7 @@ function enviar_formulario(){
             </tr>
           </table>
         </div>
-       
+
         <div class='controls controls-row'>
           <table class='table table-hover table table-bordered'>
             <tr>
@@ -275,7 +288,7 @@ function enviar_formulario(){
           $indep = number_format($fila2['ingreso_activ_indep'], 0, ',', '.');
           $otro = number_format($fila2['ingreso_otros'], 0, ',', '.');
           $total = number_format($fila2['ingreso_total'], 0, ',', '.');
-          
+
           echo "<tr>
           <td>".$nombre2."</td>
           <td>".$fila2['persona_rut']."</td>

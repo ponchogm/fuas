@@ -1,7 +1,8 @@
 <?php
 include ('seguridad2.php');
 include ('conectar.php');
-$rut=$_GET['var'];
+// $rut=$_GET['var'];
+$rut="11837242-5";
 
 $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_alum ='$rut'");
             $fil = $pregunta->fetch_array(MYSQLI_ASSOC);
@@ -22,7 +23,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
     </script>
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Beneficios - Universidad Metropolitana de Ciencias de la Educación</title>
     <link href="../img/templates/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -134,7 +135,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
     </style>
   </head>
   <body>
-    <?php include "cabecera.php"; ?> 
+    <?php include "cabecera.php"; ?>
     <div class="container">
               <br>
           <div class="col-sm-12">
@@ -171,17 +172,17 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             </div>
             <div class="form-group col-md-3">
               <input type="text" disabled class="form-control" value="<?php echo utf8_encode($ap_pat_alum); ?>">
-            </div> 
-            <div class="form-group col-md-3"> 
+            </div>
+            <div class="form-group col-md-3">
               <input type="text" disabled class="form-control" value="<?php echo utf8_encode($ap_mat_alum); ?>">
             </div>
-            <div class="form-group col-md-3">  
+            <div class="form-group col-md-3">
               <input type="text" disabled class="form-control" value="<?php echo $rut; ?>">
-            </div>  
+            </div>
             <div class="form-group col-md-8">
               <input class="form-control" disabled type="text" value="<?php echo $carrera; ?>">
             </div>
-            <div class="form-group col-md-2">  
+            <div class="form-group col-md-2">
               <input class="form-control" disabled type='text' value="Código: <?php echo $cod_car; ?>">
             </div>
             <div class="form-group col-md-2">
@@ -216,7 +217,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
               <h6>¿Tiene algún tipo de discapacidad cognitiva, física o sensorial?, si la respuesta es Si indique cual, de lo contrario escriba: No</h6>
               <input type="text" required id="discapacidad_alum" name="discapacidad_alum" class="form-control" placeholder="Discapacidad cognitiva, física o sensorial">
           </div>
-         </div>  
+         </div>
         <div class="form-row">
           <legend>Antecedentes del Grupo Familiar</legend>
           <p>
@@ -244,16 +245,16 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                    <option value="4">Usufructuario</option>
                    <option value="5">Allegado</option>
             </select>
-          </div>  
+          </div>
         </div>
         <p>
         <!-- <div class="form-row"> -->
-       
+
               <p>
               <h4 class="page-header">Integrantes e ingresos del grupo familiar <h6>Ingrese estos datos por cada integrante del grupo familiar incluído el estudiante (Para agregar integrantes de su grupo familiar haga click en el link "Agregar Integrante")</h6></h4>
     <p><h6>(Los rut deben ser ingresados con gui&oacute;n y sin puntos ej: 12345678-9)</h6>
               <div id="addinput">
-                  
+
                 <span class="label label-primary">1</span>
                 <div class="form-row">
                   <div class="form-group col-md-3">
@@ -288,8 +289,8 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="0">Parentesco</option>
                         <option value="16">Yo</option>
                       </select>
-                  </div> 
-                  <div class="form-group col-md-3">     
+                  </div>
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo1" name="prev_soc_grupo1" class="form-control" required>
                         <option value="0">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -300,7 +301,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">       
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo1" name="prev_sal_grupo1" class="form-control" required>
                         <option value="0">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -310,7 +311,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">       
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo1" name="niv_est_grupo1" class="form-control" required>
                         <option value="0">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -323,7 +324,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="8">Enseñanza Profesional Completa</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4"> 
+                  <div class="form-group col-md-4">
                         <select id="act_grupo1" name="act_grupo1" class="form-control" required>
                           <option value="0">Actividad</option>
                           <option value="1">Trabajador Dependiente o Pensionado con Renta Fija y/o Variable</option>
@@ -345,7 +346,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                           <option value="17">Estudiante y Trabajador</option>
                         </select>
                     </div>
-                  </div>  
+                  </div>
                   <div class="form-row">
                     <h6>Indique el promedio mensual entre los meses de Marzo y Agosto 2018. Escriba los valores sin el signo $ y sin puntos Ej: 120000</h6>
                     <div class="form-group col-md-4">
@@ -422,7 +423,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo2" name="prev_soc_grupo2" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -433,7 +434,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo2" name="prev_sal_grupo2" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -443,7 +444,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo2" name="niv_est_grupo2"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -490,7 +491,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo2" name="pen_grupo2" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo2" name="act_in_grupo2" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -553,7 +554,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo3" name="prev_soc_grupo3" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -564,7 +565,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo3" name="prev_sal_grupo3" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -574,7 +575,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo3" name="niv_est_grupo3"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -621,7 +622,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo3" name="pen_grupo3" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo3" name="act_in_grupo3" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -683,7 +684,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo4" name="prev_soc_grupo4" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -694,7 +695,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo4" name="prev_sal_grupo4" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -704,7 +705,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo4" name="niv_est_grupo4"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -751,7 +752,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo4" name="pen_grupo4" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo4" name="act_in_grupo4" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -814,7 +815,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo5" name="prev_soc_grupo5" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -825,7 +826,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo5" name="prev_sal_grupo5" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -835,7 +836,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo5" name="niv_est_grupo5"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -882,7 +883,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo5" name="pen_grupo5" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo5" name="act_in_grupo5" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -945,7 +946,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo6" name="prev_soc_grupo6" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -956,7 +957,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo6" name="prev_sal_grupo6" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -966,7 +967,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo6" name="niv_est_grupo6"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1013,7 +1014,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo6" name="pen_grupo6" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo6" name="act_in_grupo6" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1076,7 +1077,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo7" name="prev_soc_grupo7" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1087,7 +1088,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo7" name="prev_sal_grupo7" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1097,7 +1098,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo7" name="niv_est_grupo7"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1144,7 +1145,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo7" name="pen_grupo7" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo7" name="act_in_grupo7" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1154,7 +1155,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                       <a href="#8" onclick="ActivarCampo7();">Agregar Integrante</a>
                     </p>
                     <hr>
-                 </div>   
+                 </div>
               </div>
               <div id="addinput7" style="display:none;">
                   <p>
@@ -1207,7 +1208,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo8" name="prev_soc_grupo8" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1218,7 +1219,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo8" name="prev_sal_grupo8" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1228,7 +1229,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo8" name="niv_est_grupo8"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1275,7 +1276,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo8" name="pen_grupo8" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo8" name="act_in_grupo8" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1338,7 +1339,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo9" name="prev_soc_grupo9" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1349,7 +1350,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo9" name="prev_sal_grupo9" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1359,7 +1360,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo9" name="niv_est_grupo9"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1406,7 +1407,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo9" name="pen_grupo9" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo9" name="act_in_grupo9" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1469,7 +1470,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo10" name="prev_soc_grupo10" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1480,7 +1481,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo10" name="prev_sal_grupo10" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1490,7 +1491,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo10" name="niv_est_grupo10"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1537,7 +1538,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo10" name="pen_grupo10" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo10" name="act_in_grupo10" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1547,7 +1548,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     <a href="#11" onclick="ActivarCampo10();">Agregar Integrante</a>
                     </p>
                     <hr>
-                 </div>   
+                 </div>
               </div>
           <div id="addinput10" style="display:none;">
                   <p>
@@ -1600,7 +1601,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo11" name="prev_soc_grupo11" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1611,7 +1612,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo11" name="prev_sal_grupo11" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1621,7 +1622,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo11" name="niv_est_grupo11"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1668,7 +1669,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo11" name="pen_grupo11" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo11" name="act_in_grupo11" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1677,7 +1678,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     <p>
                      <a href="#12" onclick="ActivarCampo11();">Agregar Integrante</a>
                     </p>
-                   </div> 
+                   </div>
                     <hr>
                   </div>
         <div id="addinput11" style="display:none;">
@@ -1731,7 +1732,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo12" name="prev_soc_grupo12" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1742,7 +1743,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo12" name="prev_sal_grupo12" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1752,7 +1753,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo12" name="niv_est_grupo12"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1799,7 +1800,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo12" name="pen_grupo12" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo12" name="act_in_grupo12" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1862,7 +1863,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo13" name="prev_soc_grupo13" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -1873,7 +1874,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo13" name="prev_sal_grupo13" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -1883,7 +1884,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo13" name="niv_est_grupo13"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -1930,7 +1931,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo13" name="pen_grupo13" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo13" name="act_in_grupo13" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -1940,7 +1941,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <a href="#14" onclick="ActivarCampo13();">Agregar Integrante</a>
                     </p>
                     <hr>
-                </div>    
+                </div>
               </div>
         <div id="addinput13" style="display:none;">
                   <p>
@@ -1993,7 +1994,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo14" name="prev_soc_grupo14" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -2004,7 +2005,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo14" name="prev_sal_grupo14" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -2014,7 +2015,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo14" name="niv_est_grupo14"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -2061,7 +2062,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo14" name="pen_grupo14" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo14" name="act_in_grupo14" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -2070,7 +2071,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                     <p>
                      <a href="#15" onclick="ActivarCampo14();">Agregar Integrante</a>
                     </p>
-                 </div>   
+                 </div>
                     <hr>
               </div>
                 <div id="addinput14" style="display:none;">
@@ -2124,7 +2125,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="14">Otro</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-3">    
+                  <div class="form-group col-md-3">
                       <select id="prev_soc_grupo15" name="prev_soc_grupo15" class="form-control">
                         <option "">Prev. Social</option>
                         <option value="1">AFP</option>
@@ -2135,7 +2136,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="6">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="prev_sal_grupo15" name="prev_sal_grupo15" class="form-control">
                         <option "">Prev. Salud</option>
                         <option value="1">FONASA</option>
@@ -2145,7 +2146,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                         <option value="5">Sin previsión</option>
                       </select>
                   </div>
-                  <div class="form-group col-md-4">    
+                  <div class="form-group col-md-4">
                       <select id="niv_est_grupo15" name="niv_est_grupo15"class="form-control">
                         <option "">Nivel de estudios</option>
                         <option value="1">Sin estudios</option>
@@ -2192,7 +2193,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                      <div class="form-group col-md-4">
                       <input type="text" id="pen_grupo15" name="pen_grupo15" class="form-control" placeholder="Pensión de alimentos">
                     </div>
-                    <div class="form-group col-md-4"> 
+                    <div class="form-group col-md-4">
                       <input type="text" id="act_in_grupo15" name="act_in_grupo15" class="form-control" placeholder="Actividades Indep.">
                     </div>
                     <div class="form-group col-md-4">
@@ -2237,7 +2238,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             $postula=$row['postula_beca_alum'];
             $otra=$row['otras_becas_alum'];
             $op_ren_pos=$row['renueva_postula'];
-            
+
             if($op_ren_pos=="1"){
               $opcion_ren_pos = "Renovante";
             }
@@ -2247,20 +2248,20 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             if($op_ren_pos=="3"){
               $opcion_ren_pos = "Renovante y Postulante";
             }
-              
+
               $resultado7=$con->query("SELECT count(ingreso_alumn_id) AS res FROM ingresos WHERE '$id_alum' = ingreso_alumn_id");
               $valor=$resultado7->fetch_array(MYSQLI_ASSOC);
                 $t=$valor['res'];
             ?>
           <legend>Antecedentes del estudiante</legend>
            <div class="alert"><h6>Tu formulario ya ha sido ingresado a nuestra base de datos, si necesitas hacer alguna modificación, por favor comunícate con la asistente social de la carrera en Bienestar Estudiantil</h6></div>
-          <div class="form-group col-md-3"> 
+          <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo utf8_encode($nombre); ?>">
         </div>
         <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo utf8_encode($ap_pat_alum); ?>">
         </div>
-        <div class="form-group col-md-3">  
+        <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo utf8_encode($ap_mat_alum); ?>">
         </div>
           <div class="form-group col-md-3">
@@ -2269,10 +2270,10 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
         <div class="form-group col-md-8">
           <input class="form-control" disabled type="text" name="rut_alum" value="<?php echo $carrera; ?>">
         </div>
-         <div class="form-group col-md-2"> 
+         <div class="form-group col-md-2">
           <input class="form-control" disabled type='text' value="Código: <?php echo $cod_car; ?>">
         </div>
-         <div class="form-group col-md-2"> 
+         <div class="form-group col-md-2">
           <input type="text" disabled id="anio_ingreso" name="anio_ingreso" class="form-control" value="Año ingreso: <?php echo $ingreso; ?>">
         </div>
         <div class="form-group col-md-4">
@@ -2313,11 +2314,11 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
             <input type="text" disabled id="discapacidad_alum" name="discapacidad_alum" class="form-control" value="<?php echo $discap; ?>">
           </div>
          </div>
-       
+
           <p>
         <div class="form-row">
           <legend>Antecedentes del grupo familiar</legend>
-          
+
           <p>
            <?php
               $resultado3=$con->query("SELECT alumnos.*,hogar.*,vivienda.*
@@ -2333,18 +2334,18 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                 $viv_tipo=$fila1['vivienda_tipo'];
 
             ?>
-           
+
           <h6>Dirección completa, comuna, ciudad y teléfono.</h6>
-          <div class="form-group col-md-3"> 
+          <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo $dirgrupo; ?>">
         </div>
-          <div class="form-group col-md-3"> 
+          <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo $comunagrupo; ?>">
         </div>
-          <div class="form-group col-md-3"> 
+          <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo $ciudadgrupo; ?>">
         </div>
-          <div class="form-group col-md-3"> 
+          <div class="form-group col-md-3">
           <input type="text" disabled class="form-control" value="<?php echo $fonogrupo; ?>">
         </div>
       </div>
@@ -2358,7 +2359,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
           <p>
               <p>
             <div class="row">
-              <div class="col-md-12"> 
+              <div class="col-md-12">
               <h4 class="page-header">Antecedentes e ingresos del grupo familiar</h4>
             </div>
           </div>
@@ -2406,7 +2407,7 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                 <div class=form-row">
                   Integrante: <strong><?php echo $i; ?></strong>************************************************************************************************************
                   <p>
-                  <div class="form-group col-md-3">  
+                  <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="<?php echo $persona_nombres; ?>">
                   </div>
                   <div class="form-group col-md-3">
@@ -2426,43 +2427,43 @@ $pregunta = $con->query("SELECT rut_alum, direccion_alum FROM alumnos WHERE rut_
                   </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_parent); ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_prev_soc); ?>">
-                  </div>  
-                  <div class="form-group col-md-3">  
+                  </div>
+                  <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_prev_sal); ?>">
-                  </div>  
-                  <div class="form-group col-md-3">  
+                  </div>
+                  <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_niv_est); ?>">
                   </div>
                   <div class="form-group col-md-6">
                     <input type="text" disabled class="form-control" value="<?php echo utf8_encode($persona_act); ?>">
-                  </div> 
+                  </div>
                     <h6>Ingresos Promedio mensuales de los últimos 8 meses</h6>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Sueldo: $<?php echo $sueldo; ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Honorarios: $<?php echo $honorario; ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Aportes: $<?php echo $retiro; ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Pension: $<?php echo $pension; ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Act. Indep: $<?php echo $act_indep; ?>">
-                  </div>  
+                  </div>
                   <div class="form-group col-md-3">
                     <input type="text" disabled class="form-control" value="Otros: $<?php echo $otros; ?>">
                   </div>
-                </div>   
+                </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <input type="text" disabled class="form-control" value="Total ingresos persona del grupo familiar: $<?php echo $ingreso_total; ?>">
-                  </div>  
+                  </div>
                 </div>
                 <p>
               <?php $i++; }  ?>
