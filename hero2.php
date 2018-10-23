@@ -125,6 +125,8 @@ function enviar_formulario(){
 	  $carrera=$row['nombre_car'];
 	  $cod_car=$row['cod_carrera_alum'];
     $ren_pos=$row['renueva_postula'];
+    $monto_ren=number_format($row['monto_ren'], 0, ',', '.');
+    $monto_pos=number_format($row['monto_pos'], 0, ',', '.');
 
 	  echo $row['rut_alum'];
     echo "<p>";
@@ -135,12 +137,12 @@ function enviar_formulario(){
     Marque la Opción que corresponda en su caso:
     <p>
     <?php if($ren_pos != '3'): ?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked";}?> >Renueva 2019</label>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked";}?> >Postula 2018</label>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked disabled";}?> >Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked disabled";}?> >Postula 2018</label> Monto: $<?php echo $monto_pos;?>
     <?php endif; ?>
     <?php if($ren_pos == '3'): ?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked >Renueva 2019</label>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked >Postula 2018</label>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked disabled>Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked disabled>Postula 2018</label> Monto: $<?php echo $monto_pos;?>
     <?php endif; ?>
     </p>
       <table class="table table-hover table table-bordered" width="100%">

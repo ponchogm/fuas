@@ -97,12 +97,24 @@ function enviar_formulario(){
 	$carrera=$row['nombre_car'];
 	$cod_car=$row['cod_carrera_alum'];
 	$id_alum=$row['id_alum'];
+  $ren_pos=$row['renueva_postula'];
+    $monto_ren=number_format($row['monto_ren'], 0, ',', '.');
+    $monto_pos=number_format($row['monto_pos'], 0, ',', '.');
 
 	echo $row['rut_alum'];
   echo "<p>";
   echo $row['cod_carrera_alum'];
 }
     ?>
+    table.table>tr*2>td*4
+     <?php if($ren_pos != '3'): ?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked disabled";}?> >Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked disabled";}?> >Postula 2018</label> Monto: $<?php echo $monto_pos;?>
+    <?php endif; ?>
+    <?php if($ren_pos == '3'): ?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked disabled>Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
+      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked disabled>Postula 2018</label> Monto: $<?php echo $monto_pos;?>
+    <?php endif; ?>
       <table class="table table-hover table table-bordered" width="100%">
         <tr>
           <th>Nombre</th>
@@ -357,77 +369,6 @@ function enviar_formulario(){
               </div>
       </div>
               <!-- Fin Modal para actualizar Carrera-->
-<legend>Beneficios del estudiante</legend>
-              <table class='table table-hover table table-bordered'>
-
-            <?php
-            /*
-              $resultado2=$con->query("SELECT alumnos.*,beneficios.*,becasycreditos.*
-              FROM alumnos, beneficios, becasycreditos
-              WHERE rut_alum ='$rut' AND id_alum = id_alum_bene AND id_beca_bene = id_becas");
-            */
-              $resultado2=$con->query("SELECT alumnos.* FROM alumnos WHERE rut_alum ='$rut'");
-              while($fila = $resultado2->fetch_array(MYSQLI_ASSOC))
-            {
-            //$id_bene=$fila['id_beneficios'];
-			       //$beca=$fila['id_becas'];
-			       $postula=$fila['postula_beca_alum'];
-            //echo "<tr><td>".utf8_encode($fila['becas_nombre']).
-			//"</td><td><a href='elimina_beca.php?rut=$rut&id_alum=$id_alum&beca=$beca'>Eliminar Beca<a/></td></tr>";
-            }
-          ?>
-
-                <tr>
-                  <th>
-                    Beca interna a la cual postula
-
-                     <!-- Modal para actualizar beca de postulacion-->
-            <div id="divpostula" class="modal hide fade in" style="display: none;">
-              <div class="modal-header">
-                <a data-dismiss="modal" class="close">×</a>
-                   <h3>Actualizar Beca Interna</h3>
-              </div>
-                  <div class="modal-body">
-                  <form name="postula" action="actualizapostula.php?var2=<?php echo $rut; ?>" method="post">
-                  <p>Seleccione la beca a la cual quiere postular</p>
-                  <select id="postula" name="postula">
-                    <option value="No postula">No postula</option>
-                    <option value="Beca de alimentación UMCE">Beca de alimentación UMCE</option>
-                    <option value="Beca de estudios UMCE">Beca de estudios UMCE</option>
-                  </select>
-
-                  </div>
-                <div class="modal-footer">
-                <button class="btn btn-success" onclick="this.form.submit()">Actualizar</button>
-                <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
-                </form>
-              </div>
-      </div>
-              <!-- Fin Modal para actualizar beca de postulacion-->
-                  </th>
-                </tr>
-                <tr>
-                <td><a data-toggle='modal' href='#divpostula'><?php echo $postula; ?>*</a></td>
-              </tr>
-             </table>
-             </td>
-             </tr>
-            </table>
-            <form name="becas" id="becas" method="post" action="agregar_beca.php?id_alum=<?php echo $id_alum ?>&rut=<?php echo $rut ?>&id_bene=<?php echo $id_bene ?>" class="form-inline">
-            <select name="becas" id="becas">
-             <?php
-			$resultado3=$con->query("SELECT becasycreditos.* FROM becasycreditos");
-
-              while($fila2 = $resultado3->fetch_array(MYSQLI_ASSOC))
-            {
-            $id_beca=$fila2['id_becas'];
-			$nombre_beca=$fila2['becas_nombre'];
-            echo "<option value='". $id_beca ."'>". utf8_encode($nombre_beca) ."</option>";
-            }
-			?>
-            </select>
-            <input type="submit" value="Agregar beca a este alumno" class="btn btn-success" />
-            </form>
 <div class='controls controls-row'>
 <legend>Antecedentes del grupo familiar</legend>
           <table class='table table-hover table table-bordered'>
