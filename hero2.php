@@ -134,17 +134,28 @@ function enviar_formulario(){
 
    }
     ?>
-    Marque la Opción que corresponda en su caso:
-    <p>
     <?php if($ren_pos != '3'): ?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked disabled";}?> >Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked disabled";}?> >Postula 2018</label> Monto: $<?php echo $monto_pos;?>
+    <table class="table">
+      <tr>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked disabled";}?> >Renueva 2019</label></td>
+        <td width="20%">Monto: <?php if($monto_ren ==''){echo '--';}else{echo '$'.$monto_ren; }?></td>
+        <td width="30%"></td>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked disabled";}?> >Postula 2018</label></td>
+        <td width="20%">Monto: <?php if($monto_pos ==''){echo '--';}else{echo '$'.$monto_pos; }?></td>
+      </tr>
+    </table> 
     <?php endif; ?>
     <?php if($ren_pos == '3'): ?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked disabled>Renueva 2019</label> Monto: $<?php echo $monto_ren;?>
-      <label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked disabled>Postula 2018</label> Monto: $<?php echo $monto_pos;?>
+      <table class="table">
+      <tr>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked disabled>Renueva 2019</label></td>
+        <td width="20%">Monto: <?php if($monto_ren ==''){echo '--';}else{echo '$'.$monto_ren; }?></td>
+        <td width="30%"></td>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked disabled>Postula 2018</label></td>
+        <td width="20%">Monto: <?php if($monto_pos ==''){echo '--';}else{echo '$'.$monto_pos; }?></td>
+      </tr>
+    </table>
     <?php endif; ?>
-    </p>
       <table class="table table-hover table table-bordered" width="100%">
         <tr>
           <th>Nombre</th>

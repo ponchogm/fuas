@@ -76,7 +76,19 @@ $rut=$_GET['rut'];
 				$porig=$row['pueb_orig_alum'];
 				$sexos=$row['sexo_alum'];
 				$carrera=$row['nombre_car'];
+        $ren_pos=$row['renueva_postula'];
+        $monto_ren=number_format($row['monto_ren'], 0, ',', '.');
+        $monto_pos=number_format($row['monto_pos'], 0, ',', '.');
   			}
+        if($ren_pos == '1'){
+          $situación = 'Renueva 2019';
+        }
+        if($ren_pos == '2'){
+          $situación = 'Postula 2018';
+        }
+        if($ren_pos == '3'){
+          $situación = 'Renueva 2019 / Postula 2018';
+        }
   	?>
     <legend>Antecedentes del estudiante</legend>
     <p>
@@ -135,65 +147,30 @@ $rut=$_GET['rut'];
           <td><?php echo $carrera; ?></td>
         </tr>
     </table>
-    <legend>Beneficios del estudiante</legend>
-         <?php
-             /* $resultado2=$con->query("SELECT alumnos.*,beneficios.*,becasycreditos.*
-              FROM alumnos, beneficios, becasycreditos
-              WHERE rut_alum ='$rut' AND id_alum = id_alum_bene AND id_beca_bene = id_becas");
-
-              while($fila = $resultado2->fetch_array(MYSQLI_ASSOC))
-            {
-            $postula=$fila['postula_beca_alum'];
-			$otras_becas=$fila['otras_becas_alum'];
-            //echo "<tr><td>".utf8_encode($fila['becas_nombre'])."</td></tr>";
-            }*/
-
-            $int=$con->query("SELECT postula_beca_alum FROM alumnos WHERE rut_alum ='$rut'");
-            $fila2 = $int->fetch_array(MYSQLI_ASSOC);
-            $postula = $fila2['postula_beca_alum'];
-
-          ?>
-       <table width="100%" border="1">
-          <tr>
-            <td><strong>Beca interna a que postula</strong></td>
-          </tr>
-          <tr>
-            <td><?php echo $postula; ?></td>
-          </tr>
-        </table>
-
-    <legend>Padres que no pertenecen al grupo familiar</legend>
-      <table width="100%" border="1">
+    <p>
+    <strong>Situación de Renovación / Postulación</strong>
+       <?php if($ren_pos != '3'): ?>
+    <table class="table">
       <tr>
-        <td><strong>Nombre</strong></td>
-        <td><strong>RUT</strong></td>
-        <td><strong>Parentesco</strong></td>
-        <td><strong>Dirección</strong></td>
-        <td><strong>Comuna</strong></td>
-        <td><strong>Ciudad</strong></td>
-        <td><strong>Región</strong></td>
-        <td><strong>Est. Civil</strong></td>
-        <td><strong>Actividad</strong></td>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" <?php if($ren_pos=='1'){echo "checked disabled";}?> >Renueva 2019</label></td>
+        <td width="20%">Monto: <?php if($monto_ren ==''){echo '--';}else{echo '$'.$monto_ren; }?></td>
+        <td width="30%"></td>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" <?php if($ren_pos=='2'){echo "checked disabled";}?> >Postula 2018</label></td>
+        <td width="20%">Monto: <?php if($monto_pos ==''){echo '--';}else{echo '$'.$monto_pos; }?></td>
       </tr>
-      <?php
-              $resultado5=$con->query("SELECT alumnos.*,un_grupo_familiar.* FROM alumnos, un_grupo_familiar WHERE rut_alum ='$rut' AND id_alum = un_grupo_alum_id");
-
-              while($fila3 = $resultado5->fetch_array(MYSQLI_ASSOC))
-            {
-          $nombre3 = $fila3['un_grupo_nombres']." ".$fila3['un_grupo_ap_pat']." ".$fila3['un_grupo_ap_mat'];
-          echo "<tr>
-          <td>".$nombre3."</td>
-          <td>".$fila3['un_grupo_rut']."</td>
-          <td>".$fila3['un_grupo_parent']."</td>
-          <td>".$fila3['un_grupo_direccion']."</td>
-          <td>".$fila3['un_grupo_comuna']."</td>
-          <td>".$fila3['un_grupo_ciudad']."</td>
-          <td>".$fila3['un_grupo_region']."</td>
-          <td>".$fila3['un_grupo_ecivil']."</td>
-          <td>".$fila3['un_grupo_actividad']."</td>";
-  }
-  ?>
+    </table> 
+    <?php endif; ?>
+    <?php if($ren_pos == '3'): ?>
+      <table class="table">
+      <tr>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox1" name="ren" value="1" checked disabled>Renueva 2019</label></td>
+        <td width="20%">Monto: <?php if($monto_ren ==''){echo '--';}else{echo '$'.$monto_ren; }?></td>
+        <td width="30%"></td>
+        <td width="15%"><label class="checkbox-inline"><input type="checkbox" id="chbox2" name="pos" value="2" checked disabled>Postula 2018</label></td>
+        <td width="20%">Monto: <?php if($monto_pos ==''){echo '--';}else{echo '$'.$monto_pos; }?></td>
+      </tr>
     </table>
+    <?php endif; ?>      
     <legend>Antecedentes e ingresos del grupo familiar</legend>
     <table width="100%" border="1">
       <tr>
